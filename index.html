@@ -1,0 +1,2650 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>DailyFlow - Productivity App for Modern Life</title>
+    <meta name="description" content="DailyFlow - Aplikasi produktivitas modern untuk mengelola tugas harian, tracking kebiasaan, dan mencapai goals Anda dengan smart notifications dan analytics.">
+    <meta name="keywords" content="productivity app, task management, habit tracker, daily planner, smart notifications, android app, productivity tools, life organizer">
+    <meta name="author" content="DailyFlow Team">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="DailyFlow - Productivity App for Modern Life">
+    <meta property="og:description" content="Aplikasi produktivitas modern dengan smart notifications, habit tracking, dan analytics untuk mencapai goals Anda.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://armanwiranda.github.io/dailyflow/assets/app-icon.png">
+    <meta property="og:url" content="https://armanwiranda.github.io/dailyflow">
+    <meta property="og:site_name" content="DailyFlow">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="app">
+    <meta name="twitter:title" content="DailyFlow - Productivity App">
+    <meta name="twitter:description" content="Aplikasi produktivitas modern dengan smart notifications dan habit tracking.">
+    <meta name="twitter:image" content="https://armanwiranda.github.io/dailyflow/assets/app-icon.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/app-icon.png">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    <style>
+        /* DailyFlow Modern Theme - ULTIMATE OVERHAUL v4.0 */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
+            --secondary-gradient: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            --accent-gradient: linear-gradient(135deg, #007aff 0%, #00d4ff 100%);
+            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #1a237e 100%);
+            --success-gradient: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            
+            --primary-color: #007aff;
+            --secondary-color: #5856d6;
+            --accent-color: #00d4ff;
+            --success-color: #00ff88;
+            --warning-color: #ffaa00;
+            --error-color: #ff3366;
+            
+            --text-primary: #0a0e27;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --text-white: #ffffff;
+            
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-light: #f1f5f9;
+            --bg-dark: #0a0e27;
+            --bg-glass: rgba(255, 255, 255, 0.1);
+            
+            --border-color: #e2e8f0;
+            --border-light: #f1f5f9;
+            --border-glass: rgba(255, 255, 255, 0.2);
+            
+            --shadow-sm: 0 2px 4px 0 rgba(10, 14, 39, 0.06);
+            --shadow-md: 0 4px 12px 0 rgba(10, 14, 39, 0.08);
+            --shadow-lg: 0 8px 24px 0 rgba(10, 14, 39, 0.12);
+            --shadow-xl: 0 16px 48px 0 rgba(10, 14, 39, 0.16);
+            --shadow-2xl: 0 32px 64px 0 rgba(10, 14, 39, 0.20);
+            --shadow-blue: 0 8px 32px 0 rgba(0, 122, 255, 0.25);
+            --shadow-glass: 0 8px 32px 0 rgba(0, 122, 255, 0.15);
+            
+            --radius-sm: 0.625rem;
+            --radius-md: 0.875rem;
+            --radius-lg: 1.25rem;
+            --radius-xl: 1.75rem;
+            --radius-2xl: 2.5rem;
+            --radius-3xl: 3rem;
+            
+            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-glass);
+            transition: all var(--transition-base);
+        }
+
+        .nav-scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.875rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.875rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all var(--transition-base);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-blue);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .logo:hover .logo-icon::before {
+            left: 100%;
+        }
+
+        .logo:hover .logo-icon {
+            transform: translateY(-2px) rotate(5deg);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Desktop Navigation */
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+        }
+
+    .logo:hover {
+        transform: scale(1.05);
+    }
+
+    .logo-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--radius-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.25rem;
+        box-shadow: var(--shadow-blue);
+        transition: all var(--transition-base);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .logo-icon::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.6s;
+    }
+
+    .logo:hover .logo-icon::before {
+        left: 100%;
+    }
+
+        .nav-links a:hover ion-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .nav-cta {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius-xl);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .nav-cta:hover::before {
+            left: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+        }
+
+        .menu-toggle ion-icon {
+            font-size: 2rem;
+            color: var(--text-primary);
+            transition: all var(--transition-base);
+        }
+
+        .menu-toggle:hover {
+            background: var(--bg-light);
+        }
+
+        .menu-toggle:hover ion-icon {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: var(--shadow-2xl);
+            z-index: 2000;
+            transition: right var(--transition-base);
+            overflow-y: auto;
+        }
+
+        .sidebar.active {
+            right: 0;
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            background: var(--bg-secondary);
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sidebar-close {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+        }
+
+        .sidebar-close ion-icon {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .sidebar-close:hover {
+            background: var(--bg-light);
+        }
+
+        .sidebar-close:hover ion-icon {
+            color: var(--error-color);
+        }
+
+        .sidebar-links {
+            list-style: none;
+            padding: 1.5rem 0;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-links a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+
+        .sidebar-links a::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 0;
+            background: var(--primary-gradient);
+            transition: height var(--transition-base);
+        }
+
+        .sidebar-links a:hover {
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding-left: 2rem;
+        }
+
+        .sidebar-links a:hover::before {
+            height: 100%;
+        }
+
+        .sidebar-links a ion-icon {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+        }
+
+        .sidebar-cta {
+            margin: 1.5rem;
+            padding: 1rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-xl);
+            font-weight: 700;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all var(--transition-base);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .sidebar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 120px;
+            background: linear-gradient(135deg, #007aff 0%, #5856d6 50%, #00d4ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/></pattern></defs><rect width="200" height="200" fill="url(%23grid)"/></svg>');
+            opacity: 0.6;
+            animation: floatGrid 20s linear infinite;
+        }
+
+        @keyframes floatGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(40px, 40px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 3rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-glass);
+            box-shadow: var(--shadow-glass);
+            animation: fadeInDown 0.8s ease;
+            transition: all var(--transition-base);
+        }
+
+        .hero-badge:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            margin-bottom: 3.5rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease 0.4s both;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.875rem;
+            padding: 1.25rem 2.5rem;
+            border: none;
+            border-radius: var(--radius-xl);
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-xl);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 122, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1));
+            opacity: 0;
+            transition: opacity var(--transition-base);
+            border-radius: var(--radius-xl);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover::after {
+            opacity: 1;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .btn-primary:active {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .btn-secondary {
+            background: var(--bg-glass);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: var(--shadow-glass);
+        }
+
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .btn-secondary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-secondary:active {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 4rem 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+            position: relative;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-light);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-light);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-primary);
+            padding: 2.5rem;
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--border-light);
+            text-align: left;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transition: transform var(--transition-base);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-color);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-gradient);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Showcase Section */
+        .showcase {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #A5C8FF 0%, #ffffff 100%);
+            transition: background 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase.bg-mockup1 {
+            background: linear-gradient(135deg, #A5C8FF 0%, #ffffff 100%);
+        }
+
+        .showcase.bg-mockup2 {
+            background: linear-gradient(135deg, #FFD6E8 0%, #ffffff 100%);
+        }
+
+        .showcase.bg-mockup3 {
+            background: linear-gradient(135deg, #FFF3A6 0%, #ffffff 100%);
+        }
+
+        .showcase.bg-mockup4 {
+            background: linear-gradient(135deg, #D7F5D0 0%, #ffffff 100%);
+        }
+
+        .showcase-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .showcase-text h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .showcase-text p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .showcase-features {
+            list-style: none;
+        }
+
+        .showcase-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .showcase-features .icon {
+            width: 24px;
+            height: 24px;
+            background: var(--success-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .showcase-image {
+            position: relative;
+        }
+
+        .phone-mockup {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            background: var(--bg-dark);
+            border-radius: 2.5rem;
+            padding: 1rem;
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+            transform: rotate(5deg);
+            transition: transform var(--transition-base);
+        }
+
+        .phone-mockup:hover {
+            transform: rotate(0deg);
+        }
+
+        .phone-screen {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            aspect-ratio: 9/16;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .phone-header {
+            background: var(--bg-light);
+            height: 2rem;
+            border-radius: 0.5rem;
+        }
+
+        .phone-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .phone-item {
+            background: var(--bg-light);
+            height: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .phone-item:nth-child(2) {
+            width: 80%;
+        }
+
+        .phone-item:nth-child(3) {
+            width: 60%;
+        }
+
+        /* Phone Slider Styles - Pure Images with 3D Animation */
+        .phone-slider {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        .phone-slider-container {
+            position: relative;
+            width: 100%;
+            height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+        }
+
+        .phone-slider-container .phone-mockup {
+            position: absolute;
+            opacity: 0;
+            transform: 
+                translateX(100%) 
+                rotateY(45deg) 
+                scale(0.8)
+                translateZ(-100px);
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+            background: transparent;
+            box-shadow: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .phone-slider-container .phone-mockup.active {
+            opacity: 1;
+            transform: 
+                translateX(0) 
+                rotateY(0deg) 
+                scale(1)
+                translateZ(0);
+            z-index: 10;
+        }
+
+        .phone-slider-container .phone-mockup.prev {
+            opacity: 0.8;
+            transform: 
+                translateX(-120%) 
+                rotateY(-35deg) 
+                scale(0.85)
+                translateZ(-80px);
+            z-index: 5;
+        }
+
+        .phone-slider-container .phone-mockup.next {
+            opacity: 0.8;
+            transform: 
+                translateX(120%) 
+                rotateY(35deg) 
+                scale(0.85)
+                translateZ(-80px);
+            z-index: 5;
+        }
+
+        .phone-slider-container .phone-mockup.far-prev {
+            opacity: 0;
+            transform: 
+                translateX(-200%) 
+                rotateY(-45deg) 
+                scale(0.7)
+                translateZ(-150px);
+            z-index: 1;
+        }
+
+        .phone-slider-container .phone-mockup.far-next {
+            opacity: 0;
+            transform: 
+                translateX(200%) 
+                rotateY(45deg) 
+                scale(0.7)
+                translateZ(-150px);
+            z-index: 1;
+        }
+
+        .phone-mockup-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Enhanced 3D Hover Effects */
+        .phone-slider-container .phone-mockup:hover {
+            transform: 
+                translateX(0) 
+                rotateY(0deg) 
+                scale(1.03)
+                translateZ(15px);
+            box-shadow: none;
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .phone-slider-container .phone-mockup.prev:hover {
+            transform: 
+                translateX(-110%) 
+                rotateY(-25deg) 
+                scale(0.88)
+                translateZ(-60px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .phone-slider-container .phone-mockup.next:hover {
+            transform: 
+                translateX(110%) 
+                rotateY(25deg) 
+                scale(0.88)
+                translateZ(-60px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 10;
+            font-size: 1.2rem;
+            color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .slider-btn:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .prev-btn {
+            left: -20px;
+        }
+
+        .next-btn {
+            right: -20px;
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(165, 200, 255, 0.3); /* Match mockup1 color */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            transition: background 0.8s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Dynamic dot container backgrounds for desktop */
+        .showcase.bg-mockup1 .slider-indicators {
+            background: rgba(165, 200, 255, 0.3); /* #A5C8FF */
+            border-color: rgba(165, 200, 255, 0.4);
+        }
+        
+        .showcase.bg-mockup2 .slider-indicators {
+            background: rgba(255, 214, 232, 0.3); /* #FFD6E8 */
+            border-color: rgba(255, 214, 232, 0.4);
+        }
+        
+        .showcase.bg-mockup3 .slider-indicators {
+            background: rgba(255, 243, 166, 0.3); /* #FFF3A6 */
+            border-color: rgba(255, 243, 166, 0.4);
+        }
+        
+        .showcase.bg-mockup4 .slider-indicators {
+            background: rgba(215, 245, 208, 0.3); /* #D7F5D0 */
+            border-color: rgba(215, 245, 208, 0.4);
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Touch support for mobile - 3D Optimized */
+        @media (max-width: 768px) {
+            /* Hide arrow buttons on mobile */
+            .slider-btn {
+                display: none;
+            }
+            
+            /* Show dots navigation on mobile */
+            .slider-indicators {
+                position: absolute;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 12px;
+                padding: 12px 20px;
+                background: rgba(165, 200, 255, 0.3); /* Match mockup1 color */
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                border-radius: 25px;
+                z-index: 15;
+                transition: background 0.8s ease;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Dynamic dot container backgrounds */
+            .showcase.bg-mockup1 .slider-indicators {
+                background: rgba(165, 200, 255, 0.3); /* #A5C8FF */
+                border-color: rgba(165, 200, 255, 0.4);
+            }
+            
+            .showcase.bg-mockup2 .slider-indicators {
+                background: rgba(255, 214, 232, 0.3); /* #FFD6E8 */
+                border-color: rgba(255, 214, 232, 0.4);
+            }
+            
+            .showcase.bg-mockup3 .slider-indicators {
+                background: rgba(255, 243, 166, 0.3); /* #FFF3A6 */
+                border-color: rgba(255, 243, 166, 0.4);
+            }
+            
+            .showcase.bg-mockup4 .slider-indicators {
+                background: rgba(215, 245, 208, 0.3); /* #D7F5D0 */
+                border-color: rgba(215, 245, 208, 0.4);
+            }
+            
+            .indicator {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                cursor: pointer;
+                transition: all 0.3s ease;
+                will-change: transform;
+            }
+            
+            .indicator.active {
+                background: white;
+                transform: scale(1.2);
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+            
+            .indicator:hover {
+                background: rgba(255, 255, 255, 0.7);
+            }
+            
+            /* Hardware acceleration for smooth animations */
+            .phone-slider-container,
+            .phone-slider-container .phone-mockup,
+            .indicator,
+            .feature-card,
+            .btn {
+                transform: translateZ(0);
+                backface-visibility: hidden;
+                perspective: 1000px;
+                -webkit-transform: translateZ(0);
+                -webkit-backface-visibility: hidden;
+                -webkit-perspective: 1000px;
+            }
+            
+            .phone-slider {
+                max-width: 400px;
+                perspective: 800px;
+            }
+            
+            .phone-slider-container {
+                height: 600px;
+                cursor: grab; /* Add grab cursor for touch indication */
+            }
+            
+            .phone-slider-container:active {
+                cursor: grabbing; /* Change cursor when dragging */
+            }
+            
+            .phone-slider-container .phone-mockup {
+                width: 300px;
+                height: 550px;
+                cursor: pointer; /* Make mockup clickable */
+            }
+            
+            /* Optimized mobile animations - reduced complexity */
+            .phone-slider-container .phone-mockup {
+                transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                will-change: transform, opacity;
+            }
+            
+            .phone-slider-container .phone-mockup.active {
+                transform: translateX(0) scale(1);
+            }
+            
+            .phone-slider-container .phone-mockup.prev {
+                transform: translateX(-100%) scale(0.85);
+            }
+            
+            .phone-slider-container .phone-mockup.next {
+                transform: translateX(100%) scale(0.85);
+            }
+            
+            .phone-slider-container .phone-mockup.far-prev,
+            .phone-slider-container .phone-mockup.far-next {
+                opacity: 0;
+                transform: translateX(0) scale(0) translateZ(-200px);
+            }
+            
+            /* Disable 3D transforms on mobile for better performance */
+            .phone-slider-container .phone-mockup:hover {
+                transform: translateX(0) scale(1.02);
+            }
+            
+            .phone-slider-container .phone-mockup.prev:hover {
+                transform: translateX(-100%) scale(0.88);
+            }
+            
+            .phone-slider-container .phone-mockup.next:hover {
+                transform: translateX(100%) scale(0.88);
+            }
+            
+            /* Reduce background transition complexity on mobile */
+            .showcase {
+                transition: background 0.6s ease;
+            }
+            
+            /* Optimize hero animations for mobile */
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            /* Disable parallax on mobile for better performance */
+            .hero::before {
+                animation: none;
+            }
+            
+            /* Optimize feature cards animations */
+            .feature-card {
+                transition: all 0.3s ease;
+                will-change: transform;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-4px);
+            }
+            
+            /* Disable complex hover effects on mobile */
+            .feature-icon::before {
+                display: none;
+            }
+            
+            .feature-card:hover .feature-icon {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Hide arrow buttons on small mobile */
+            .slider-btn {
+                display: none !important;
+            }
+            
+            /* Enhanced dots for small mobile */
+            .slider-indicators {
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                gap: 10px;
+                padding: 10px 16px;
+                background: rgba(165, 200, 255, 0.3); /* Match mockup1 color */
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                border-radius: 20px;
+                z-index: 15;
+                transition: background 0.8s ease;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+            
+            /* Dynamic dot container backgrounds for small mobile */
+            .showcase.bg-mockup1 .slider-indicators {
+                background: rgba(165, 200, 255, 0.3); /* #A5C8FF */
+                border-color: rgba(165, 200, 255, 0.4);
+            }
+            
+            .showcase.bg-mockup2 .slider-indicators {
+                background: rgba(255, 214, 232, 0.3); /* #FFD6E8 */
+                border-color: rgba(255, 214, 232, 0.4);
+            }
+            
+            .showcase.bg-mockup3 .slider-indicators {
+                background: rgba(255, 243, 166, 0.3); /* #FFF3A6 */
+                border-color: rgba(255, 243, 166, 0.4);
+            }
+            
+            .showcase.bg-mockup4 .slider-indicators {
+                background: rgba(215, 245, 208, 0.3); /* #D7F5D0 */
+                border-color: rgba(215, 245, 208, 0.4);
+            }
+            
+            .indicator {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.4);
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            
+            .indicator.active {
+                background: white;
+                transform: scale(1.1);
+                box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            }
+            
+            .indicator:hover {
+                background: rgba(255, 255, 255, 0.7);
+            }
+            
+            .phone-slider {
+                max-width: 320px;
+                perspective: 600px;
+            }
+            
+            .phone-slider-container {
+                height: 520px;
+                cursor: grab;
+            }
+            
+            .phone-slider-container:active {
+                cursor: grabbing;
+            }
+            
+            .phone-slider-container .phone-mockup {
+                width: 250px;
+                height: 480px;
+                cursor: pointer;
+            }
+            
+            /* Ultra-optimized animations for small mobile */
+            .phone-slider-container .phone-mockup {
+                transition: all 0.8s ease;
+                will-change: transform, opacity;
+            }
+            
+            .phone-slider-container .phone-mockup.active {
+                transform: translateX(0) scale(1);
+            }
+            
+            .phone-slider-container .phone-mockup.prev {
+                transform: translateX(-90%) scale(0.8);
+            }
+            
+            .phone-slider-container .phone-mockup.next {
+                transform: translateX(90%) scale(0.8);
+            }
+            
+            /* Disable all hover effects on small mobile for performance */
+            .phone-slider-container .phone-mockup:hover {
+                transform: none;
+            }
+            
+            /* Disable background transitions on small mobile */
+            .showcase {
+                transition: none;
+            }
+            
+            /* Minimal feature card animations */
+            .feature-card {
+                transition: all 0.2s ease;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-2px);
+            }
+            
+            /* Disable all complex effects */
+            .feature-icon::before {
+                display: none !important;
+            }
+            
+            .feature-card:hover .feature-icon {
+                transform: none;
+            }
+            
+            /* Optimize button animations */
+            .btn {
+                transition: all 0.2s ease;
+            }
+            
+            .btn:hover {
+                transform: translateY(-1px);
+            }
+        }
+
+        /* Download Section */
+        .download {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #007aff 0%, #5856d6 50%, #00b4d8 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="2" fill="rgba(255,255,255,0.2)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.4;
+        }
+
+        .download-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .download h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .download p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: white;
+            color: var(--text-primary);
+            padding: 1.5rem 2.5rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-xl);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 250px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        .download-btn .icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .download-btn .icon.android {
+            color: #3ddc84;
+        }
+
+        .download-btn .icon.github {
+            color: #333;
+        }
+
+        .download-btn .content {
+            flex: 1;
+            text-align: left;
+        }
+
+        .download-btn .title {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .download-btn .subtitle {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #03045e 0%, #0077b6 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer-column h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 960px;
+            }
+            
+            .nav-links {
+                gap: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 720px;
+            }
+            
+            .showcase-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .showcase-text {
+                text-align: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            
+            .nav-links {
+                gap: 1.5rem;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.875rem;
+            }
+            
+            .nav-links a ion-icon {
+                font-size: 1rem;
+            }
+            
+            .nav-cta {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 540px;
+                padding: 0 1rem;
+            }
+            
+            /* Hide Desktop Navigation */
+            .nav-links {
+                display: none;
+            }
+            
+            .nav-cta {
+                display: none;
+            }
+            
+            /* Show Mobile Menu Toggle */
+            .menu-toggle {
+                display: block;
+            }
+
+            /* Logo adjustments */
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .logo-icon img {
+                width: 24px !important;
+                height: 24px !important;
+                border-radius: 6px !important;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 8vw, 3rem);
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1rem, 4vw, 1.25rem);
+                margin-bottom: 2.5rem;
+            }
+            
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero-buttons {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            /* Sections */
+            .section-title {
+                font-size: clamp(1.75rem, 6vw, 2.5rem);
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            /* Features */
+            .features {
+                padding: 80px 0;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .feature-card {
+                padding: 2rem;
+                text-align: center;
+            }
+            
+            .feature-icon {
+                margin: 0 auto 1.25rem;
+            }
+
+            /* Stats */
+            .stats {
+                padding: 3rem 0;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            /* Showcase */
+            .showcase {
+                padding: 80px 0;
+            }
+            
+            .showcase-text h2 {
+                font-size: clamp(1.75rem, 6vw, 2.25rem);
+            }
+            
+            .phone-mockup {
+                max-width: 250px;
+            }
+
+            /* Download */
+            .download {
+                padding: 80px 0;
+            }
+            
+            .download h2 {
+                font-size: clamp(1.75rem, 6vw, 2.5rem);
+            }
+            
+            .download p {
+                font-size: 1rem;
+                margin-bottom: 2.5rem;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .download-btn {
+                width: 100%;
+                max-width: 320px;
+                padding: 1.25rem 2rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            footer {
+                padding: 3rem 0 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 0.75rem;
+            }
+            
+            /* Sidebar adjustments for small screens */
+            .sidebar {
+                width: 280px;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.75rem, 10vw, 2.5rem);
+            }
+            
+            .btn {
+                padding: 0.875rem 1.75rem;
+                font-size: 0.9rem;
+            }
+            
+            .features {
+                padding: 60px 0;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .download-btn {
+                padding: 1rem 1.5rem;
+            }
+            
+            .download-btn .icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.25rem;
+            }
+            
+            .download-btn .title {
+                font-size: 0.95rem;
+            }
+            
+            .download-btn .subtitle {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <img src="assets/app-icon.png" alt="DailyFlow" style="width: 32px; height: 32px; border-radius: 8px;">
+                    </div>
+                    DailyFlow
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <ul class="nav-links">
+                    <li>
+                        <a href="#home">
+                            <ion-icon name="home-outline"></ion-icon>
+                            <span>Beranda</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#features">
+                            <ion-icon name="sparkles-outline"></ion-icon>
+                            <span>Fitur</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#showcase">
+                            <ion-icon name="phone-portrait-outline"></ion-icon>
+                            <span>Tampilan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#download">
+                            <ion-icon name="download-outline"></ion-icon>
+                            <span>Download</span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <a href="#download" class="nav-cta">
+                    <ion-icon name="rocket-launch-outline"></ion-icon>
+                    Download Gratis
+                </a>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" id="menuToggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="logo-icon" style="width: 40px; height: 40px;">
+                    <img src="assets/app-icon.png" alt="DailyFlow" style="width: 24px; height: 24px; border-radius: 6px;">
+                </div>
+                DailyFlow
+            </div>
+            <button class="sidebar-close" id="sidebarClose">
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+        </div>
+        
+        <ul class="sidebar-links">
+            <li>
+                <a href="#home" class="sidebar-link">
+                    <ion-icon name="home-outline"></ion-icon>
+                    Beranda
+                </a>
+            </li>
+            <li>
+                <a href="#features" class="sidebar-link">
+                    <ion-icon name="sparkles-outline"></ion-icon>
+                    Fitur
+                </a>
+            </li>
+            <li>
+                <a href="#showcase" class="sidebar-link">
+                    <ion-icon name="phone-portrait-outline"></ion-icon>
+                    Tampilan
+                </a>
+            </li>
+            <li>
+                <a href="#download" class="sidebar-link">
+                    <ion-icon name="download-outline"></ion-icon>
+                    Download
+                </a>
+            </li>
+        </ul>
+        
+        <a href="#download" class="sidebar-cta">
+            <ion-icon name="rocket-launch-outline"></ion-icon>
+            Download Gratis
+        </a>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <ion-icon name="sparkles-outline"></ion-icon>
+                    <span>Productivity Reimagined</span>
+                </div>
+                <h1>Productivity App untuk Modern Life</h1>
+                <p class="hero-subtitle">Kelola tugas, tracking kebiasaan, dan capai goals dengan smart notifications dan analytics yang intuitif.</p>
+                <div class="hero-buttons">
+                    <a href="#download" class="btn btn-primary">
+                        <ion-icon name="download-outline"></ion-icon>
+                        Download Sekarang
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        <ion-icon name="play-circle-outline"></ion-icon>
+                        Lihat Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Tasks Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Habits Tracked</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">User Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <ion-icon name="star-outline"></ion-icon>
+                    <span>Fitur Unggulan</span>
+                </div>
+                <h2 class="section-title">Semua yang Anda Butuhkan untuk Produktivitas</h2>
+                <p class="section-subtitle">Dari task management hingga habit tracking, semua dalam satu aplikasi modern.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <ion-icon name="list-outline"></ion-icon>
+                    </div>
+                    <h3>Smart Task Management</h3>
+                    <p>Kelola tugas harian dengan deadline, prioritas, dan notifikasi pengingat yang terorganisir per kategori. Sistem pencarian real-time untuk menemukan tugas dengan cepat.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                    </div>
+                    <h3>Habit Tracking System</h3>
+                    <p>Bangun kebiasaan positif dengan sistem tracking harian, reminder otomatis, dan statistik perkembangan yang detail. Monitor streak dan achievement Anda.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <ion-icon name="notifications-outline"></ion-icon>
+                    </div>
+                    <h3>Intelligent Notifications</h3>
+                    <p>Notifikasi pintar yang terorganisir per kategori (tasks & habits) dengan timing yang akurat. Channel-based system untuk mencegah konflik notifikasi.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </div>
+                    <h3>Real-time Search</h3>
+                    <p>Temukan tugas dan kebiasaan dengan mudah menggunakan fitur search real-time yang intuitif. Search berdasarkan title dan description.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Monitor perkembangan produktivitas Anda dengan dashboard statistik yang informatif. Track completion rate, daily progress, dan trends.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <ion-icon name="moon-outline"></ion-icon>
+                    </div>
+                    <h3>Dark Mode Support</h3>
+                    <p>Nyaman digunakan di segala kondisi dengan tema gelap yang modern dan eye-friendly. Automatic theme switching berdasarkan preferensi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="showcase bg-mockup1" id="showcase-section">
+        <div class="container">
+            <div class="showcase-content">
+                <div class="showcase-text">
+                    <h2>Desain Modern, User Experience Terbaik</h2>
+                    <p>DailyFlow dirancang dengan fokus pada user experience yang intuitif dan modern. Setiap fitur dibuat untuk memudahkan hidup Anda.</p>
+                    <ul class="showcase-features">
+                        <li>
+                            <span class="icon">✓</span>
+                            <span>Interface yang clean dan modern</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span>Navigasi yang intuitive dan cepat</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span>Responsive design untuk semua device</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span>Smooth animations dan transitions</span>
+                        </li>
+                        <li>
+                            <span class="icon">✓</span>
+                            <span>Dark mode dengan eye-friendly colors</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="showcase-image">
+                    <div class="phone-slider">
+                        <div class="phone-slider-container">
+                            <!-- Phone Mockup 1 - Dashboard -->
+                            <div class="phone-mockup active">
+                                <img src="img/mockup1.png" alt="Dashboard Design" class="phone-mockup-image">
+                            </div>
+                            
+                            <!-- Phone Mockup 2 - Task List -->
+                            <div class="phone-mockup">
+                                <img src="img/mockup2.png" alt="Task List Design" class="phone-mockup-image">
+                            </div>
+                            
+                            <!-- Phone Mockup 3 - Statistics -->
+                            <div class="phone-mockup">
+                                <img src="img/mockup3.png" alt="Statistics Design" class="phone-mockup-image">
+                            </div>
+                            
+                            <!-- Phone Mockup 4 - Profile -->
+                            <div class="phone-mockup">
+                                <img src="img/mockup4.png" alt="Profile Design" class="phone-mockup-image">
+                            </div>
+                        </div>
+                        
+                        <!-- Slider Controls -->
+                        <button class="slider-btn prev-btn" id="phoneSliderPrev">
+                            <ion-icon name="chevron-back-outline"></ion-icon>
+                        </button>
+                        <button class="slider-btn next-btn" id="phoneSliderNext">
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </button>
+                        
+                        <!-- Slider Indicators -->
+                        <div class="slider-indicators">
+                            <span class="indicator active" data-slide="0"></span>
+                            <span class="indicator" data-slide="1"></span>
+                            <span class="indicator" data-slide="2"></span>
+                            <span class="indicator" data-slide="3"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download" id="download">
+        <div class="container">
+            <div class="download-content">
+                <div class="section-badge">
+                    <ion-icon name="download-outline"></ion-icon>
+                    <span>Download Gratis</span>
+                </div>
+                <h2>Mulai Perjalanan Produktivitas Anda</h2>
+                <p>Download DailyFlow sekarang dan rasakan perbedaan dalam produktivitas harian Anda.</p>
+                <div class="download-buttons">
+                    <a href="https://Randa23356.github.io/dailyflow/dailyflow.apk" class="download-btn" id="android-download">
+                        <div class="icon android">
+                            <ion-icon name="logo-android"></ion-icon>
+                        </div>
+                        <div class="content">
+                            <div class="title">Download untuk Android</div>
+                            <div class="subtitle">APK • Versi Terbaru • Gratis</div>
+                        </div>
+                    </a>
+                    <a href="https://github.com/Randa23356/dailyflow" class="download-btn" id="source-code">
+                        <div class="icon github">
+                            <ion-icon name="logo-github"></ion-icon>
+                        </div>
+                        <div class="content">
+                            <div class="title">Lihat Source Code</div>
+                            <div class="subtitle">GitHub • Open Source</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>DailyFlow</h3>
+                    <p>Aplikasi produktivitas modern untuk mengelola tugas harian dan membangun kebiasaan baik. Dibuat dengan menggunakan teknologi terkini.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Produk</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Fitur</a></li>
+                        <li><a href="#download">Download</a></li>
+                        <li><a href="#showcase">Tampilan</a></li>
+                        <li><a href="https://ftwodev.gt.tc/projects.php">Release Notes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="mailto:randamoonton@gmail.com">Contact</a></li>
+                        <li><a href="https://ftwodev.gt.tc/contact.php">Report Issue</a></li>
+                        <li><a href="https://ftwodev.gt.tc/contact.php">Documentation</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/Randa23356/dailyflow">GitHub</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="https://instagram.com/ftwodev">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/in/arman-wiranda">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 DailyFlow. All rights reserved. Made with using Cordova & Modern Web Technologies</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarClose = document.getElementById('sidebarClose');
+        const overlay = document.getElementById('overlay');
+        const navbar = document.getElementById('navbar');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const sidebarCta = document.querySelector('.sidebar-cta');
+
+        // Toggle sidebar
+        function openSidebar() {
+            sidebar.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        if (menuToggle) menuToggle.addEventListener('click', openSidebar);
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+
+        // Close sidebar when clicking links
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeSidebar();
+            });
+        });
+
+        if (sidebarCta) {
+            sidebarCta.addEventListener('click', () => {
+                closeSidebar();
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .stat-item, .phone-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Typing effect for hero title
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let index = 0;
+            
+            function typeText() {
+                if (index < text.length) {
+                    heroTitle.textContent += text.charAt(index);
+                    index++;
+                    setTimeout(typeText, 50);
+                }
+            }
+            
+            setTimeout(typeText, 1000);
+        }
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Download button loading state
+        const downloadBtn = document.querySelector('.download-btn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Add loading state
+                const originalContent = this.innerHTML;
+                this.innerHTML = '<ion-icon name="download-outline"></ion-icon> Downloading...';
+                this.style.pointerEvents = 'none';
+                this.style.opacity = '0.7';
+                
+                // Simulate download
+                setTimeout(() => {
+                    // Start actual download
+                    window.location.href = 'dailyflow.apk';
+                    
+                    // Reset button
+                    this.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> Downloaded!';
+                    this.style.background = 'linear-gradient(135deg, #00ff88 0%, #00d4ff 100%)';
+                    
+                    setTimeout(() => {
+                        this.innerHTML = originalContent;
+                        this.style.pointerEvents = '';
+                        this.style.opacity = '';
+                        this.style.background = '';
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        // Enhanced Phone Slider Functionality with 3D Animation
+        class PhoneSlider {
+            constructor() {
+                this.currentSlide = 0;
+                this.mockups = document.querySelectorAll('.phone-slider-container .phone-mockup');
+                this.indicators = document.querySelectorAll('.indicator');
+                this.prevBtn = document.getElementById('phoneSliderPrev');
+                this.nextBtn = document.getElementById('phoneSliderNext');
+                this.totalSlides = this.mockups.length;
+                this.autoPlayInterval = null;
+                this.touchStartX = 0;
+                this.touchEndX = 0;
+                this.isAnimating = false;
+                
+                this.init();
+            }
+
+            init() {
+                // Button controls (hidden on mobile)
+                if (this.prevBtn && this.nextBtn) {
+                    this.prevBtn.addEventListener('click', () => this.prevSlide());
+                    this.nextBtn.addEventListener('click', () => this.nextSlide());
+                }
+                
+                // Indicator controls
+                this.indicators.forEach((indicator, index) => {
+                    indicator.addEventListener('click', () => this.goToSlide(index));
+                });
+                
+                // Touch/swipe support
+                const container = document.querySelector('.phone-slider-container');
+                container.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
+                container.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
+                
+                // Click on mockup to change slide (mobile enhancement)
+                this.mockups.forEach((mockup, index) => {
+                    mockup.addEventListener('click', () => {
+                        // Only on mobile devices
+                        if (window.innerWidth <= 768) {
+                            if (index === this.getPrevIndex()) {
+                                this.prevSlide();
+                            } else if (index === this.getNextIndex()) {
+                                this.nextSlide();
+                            }
+                        }
+                    });
+                });
+                
+                // Auto-play
+                this.startAutoPlay();
+                
+                // Pause auto-play on hover (desktop only)
+                const slider = document.querySelector('.phone-slider');
+                if (window.innerWidth > 768) {
+                    slider.addEventListener('mouseenter', () => this.stopAutoPlay());
+                    slider.addEventListener('mouseleave', () => this.startAutoPlay());
+                }
+                
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') this.prevSlide();
+                    if (e.key === 'ArrowRight') this.nextSlide();
+                });
+
+                // Initialize first slide
+                this.updateSlides();
+            }
+
+            updateSlides() {
+                // Update mockups with 3D animation classes
+                this.mockups.forEach((mockup, index) => {
+                    mockup.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
+                    
+                    if (index === this.currentSlide) {
+                        mockup.classList.add('active');
+                    } else if (index === this.getPrevIndex()) {
+                        mockup.classList.add('prev');
+                    } else if (index === this.getNextIndex()) {
+                        mockup.classList.add('next');
+                    } else if (index === this.getFarPrevIndex()) {
+                        mockup.classList.add('far-prev');
+                    } else if (index === this.getFarNextIndex()) {
+                        mockup.classList.add('far-next');
+                    }
+                });
+                
+                // Update indicators
+                this.indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentSlide);
+                });
+
+                // Update showcase background based on current slide
+                this.updateShowcaseBackground();
+            }
+
+            updateShowcaseBackground() {
+                const showcaseSection = document.getElementById('showcase-section');
+                if (showcaseSection) {
+                    // Remove all background classes
+                    showcaseSection.classList.remove('bg-mockup1', 'bg-mockup2', 'bg-mockup3', 'bg-mockup4');
+                    
+                    // Add appropriate background class based on current slide
+                    const bgClass = `bg-mockup${this.currentSlide + 1}`;
+                    showcaseSection.classList.add(bgClass);
+                }
+            }
+
+            nextSlide() {
+                if (this.isAnimating) return;
+                this.isAnimating = true;
+                this.currentSlide = this.getNextIndex();
+                this.updateSlides();
+                this.resetAutoPlay();
+                
+                // Reset animation lock after transition completes
+                setTimeout(() => {
+                    this.isAnimating = false;
+                }, 800);
+            }
+
+            prevSlide() {
+                if (this.isAnimating) return;
+                this.isAnimating = true;
+                this.currentSlide = this.getPrevIndex();
+                this.updateSlides();
+                this.resetAutoPlay();
+                
+                // Reset animation lock after transition completes
+                setTimeout(() => {
+                    this.isAnimating = false;
+                }, 800);
+            }
+
+            goToSlide(index) {
+                if (this.isAnimating || index === this.currentSlide) return;
+                this.isAnimating = true;
+                this.currentSlide = index;
+                this.updateSlides();
+                this.resetAutoPlay();
+                
+                // Reset animation lock after transition completes
+                setTimeout(() => {
+                    this.isAnimating = false;
+                }, 800);
+            }
+
+            getNextIndex() {
+                return (this.currentSlide + 1) % this.totalSlides;
+            }
+
+            getPrevIndex() {
+                return (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+            }
+
+            getFarPrevIndex() {
+                return (this.currentSlide - 2 + this.totalSlides) % this.totalSlides;
+            }
+
+            getFarNextIndex() {
+                return (this.currentSlide + 2) % this.totalSlides;
+            }
+
+            startAutoPlay() {
+                this.stopAutoPlay();
+                this.autoPlayInterval = setInterval(() => this.nextSlide(), 4000);
+            }
+
+            stopAutoPlay() {
+                if (this.autoPlayInterval) {
+                    clearInterval(this.autoPlayInterval);
+                    this.autoPlayInterval = null;
+                }
+            }
+
+            resetAutoPlay() {
+                this.stopAutoPlay();
+                this.startAutoPlay();
+            }
+
+            handleTouchStart(e) {
+                this.touchStartX = e.touches[0].clientX;
+            }
+
+            handleTouchEnd(e) {
+                this.touchEndX = e.changedTouches[0].clientX;
+                this.handleSwipe();
+            }
+
+            handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = this.touchStartX - this.touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        this.nextSlide(); // Swipe left, go next
+                    } else {
+                        this.prevSlide(); // Swipe right, go prev
+                    }
+                }
+            }
+        }
+
+        // Initialize phone slider when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            new PhoneSlider();
+        });
+
+        </script>
+</body>
+</html>

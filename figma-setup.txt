@@ -1,0 +1,52 @@
+FIGMA SETUP INSTRUCTIONS
+========================
+
+1. Create New Frame: 280 × 580px
+   - Name: "Phone Frame"
+   - Corner Radius: 40px
+   - Background: Linear gradient 145deg, #1a1a1a to #2d2d2d
+   - Stroke: 2px, rgba(255,255,255,0.1)
+
+2. Create Screen Frame: 264 × 548px
+   - Name: "Phone Screen" 
+   - Position: X:8, Y:16
+   - Corner Radius: 32px
+   - Background: White #ffffff
+
+3. Create Status Bar: 264 × 24px
+   - Name: "Status Bar"
+   - Position: X:8, Y:16
+   - Corner Radius: 32px 32px 0 0
+   - Background: Linear gradient 135deg, #f8f9fa to #e9ecef
+
+4. Create Content Area: 256 × 504px
+   - Name: "Content Area"
+   - Position: X:12, Y:44
+   - Corner Radius: 16px
+   - Background: White #ffffff
+
+EXPORT SETTINGS:
+- Format: PNG
+- Scale: 2x
+- Quality: Medium
+- Size: 512 × 1008px (final exported size)
+
+DESIGN VARIATIONS NEEDED:
+1. design1.png - Dashboard
+2. design2.png - Task List  
+3. design3.png - Statistics
+4. design4.png - Profile/Settings
+
+COLOR PALETTE:
+- Primary: #007aff
+- Secondary: #5856d6
+- Accent: #00b4d8
+- Background: #f8f9fa
+- Text: #333333
+
+TIPS:
+- Use 8px grid system
+- Min touch target: 44px
+- Font size: min 12px
+- Card radius: 12px
+- Button radius: 8px
