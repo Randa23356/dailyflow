@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,82 +8,88 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>DailyFlow - Productivity App for Modern Life</title>
-    <meta name="description" content="DailyFlow - Aplikasi produktivitas modern untuk mengelola tugas harian, tracking kebiasaan, dan mencapai goals Anda dengan smart notifications dan analytics.">
-    <meta name="keywords" content="productivity app, task management, habit tracker, daily planner, smart notifications, android app, productivity tools, life organizer">
+    <meta name="description"
+        content="DailyFlow - Aplikasi produktivitas modern untuk mengelola tugas harian, tracking kebiasaan, dan mencapai goals Anda dengan smart notifications dan analytics.">
+    <meta name="keywords"
+        content="productivity app, task management, habit tracker, daily planner, smart notifications, android app, productivity tools, life organizer">
     <meta name="author" content="DailyFlow Team">
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="DailyFlow - Productivity App for Modern Life">
-    <meta property="og:description" content="Aplikasi produktivitas modern dengan smart notifications, habit tracking, dan analytics untuk mencapai goals Anda.">
+    <meta property="og:description"
+        content="Aplikasi produktivitas modern dengan smart notifications, habit tracking, dan analytics untuk mencapai goals Anda.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://armanwiranda.github.io/dailyflow/assets/app-icon.png">
     <meta property="og:url" content="https://armanwiranda.github.io/dailyflow">
     <meta property="og:site_name" content="DailyFlow">
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="app">
     <meta name="twitter:title" content="DailyFlow - Productivity App">
-    <meta name="twitter:description" content="Aplikasi produktivitas modern dengan smart notifications dan habit tracking.">
+    <meta name="twitter:description"
+        content="Aplikasi produktivitas modern dengan smart notifications dan habit tracking.">
     <meta name="twitter:image" content="https://armanwiranda.github.io/dailyflow/assets/app-icon.png">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
+
     <style>
-        /* DailyFlow Modern Theme - ULTIMATE OVERHAUL v4.0 */
+        /* DailyFlow Modern Theme - Sky Blue Edition */
         :root {
-            --primary-gradient: linear-gradient(135deg, #007aff 0%, #5856d6 100%);
-            --secondary-gradient: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
-            --accent-gradient: linear-gradient(135deg, #007aff 0%, #00d4ff 100%);
-            --dark-gradient: linear-gradient(135deg, #0a0e27 0%, #1a237e 100%);
-            --success-gradient: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            
-            --primary-color: #007aff;
-            --secondary-color: #5856d6;
-            --accent-color: #00d4ff;
-            --success-color: #00ff88;
-            --warning-color: #ffaa00;
-            --error-color: #ff3366;
-            
-            --text-primary: #0a0e27;
+            /* Sky Blue Palette - matches Flutter app */
+            --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            --secondary-gradient: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+            --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+            --dark-gradient: linear-gradient(135deg, #0c4a6e 0%, #082f49 100%);
+            --success-gradient: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);
+            --card-gradient: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+
+            --primary-color: #0ea5e9;
+            --secondary-color: #0284c7;
+            --accent-color: #38bdf8;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+
+            --text-primary: #082f49;
             --text-secondary: #64748b;
             --text-light: #94a3b8;
             --text-white: #ffffff;
-            
+
             --bg-primary: #ffffff;
-            --bg-secondary: #f8fafc;
-            --bg-light: #f1f5f9;
-            --bg-dark: #0a0e27;
+            --bg-secondary: #f0f9ff;
+            --bg-light: #e0f2fe;
+            --bg-dark: #082f49;
             --bg-glass: rgba(255, 255, 255, 0.1);
-            
-            --border-color: #e2e8f0;
-            --border-light: #f1f5f9;
+
+            --border-color: #bae6fd;
+            --border-light: #e0f2fe;
             --border-glass: rgba(255, 255, 255, 0.2);
-            
-            --shadow-sm: 0 2px 4px 0 rgba(10, 14, 39, 0.06);
-            --shadow-md: 0 4px 12px 0 rgba(10, 14, 39, 0.08);
-            --shadow-lg: 0 8px 24px 0 rgba(10, 14, 39, 0.12);
-            --shadow-xl: 0 16px 48px 0 rgba(10, 14, 39, 0.16);
-            --shadow-2xl: 0 32px 64px 0 rgba(10, 14, 39, 0.20);
-            --shadow-blue: 0 8px 32px 0 rgba(0, 122, 255, 0.25);
-            --shadow-glass: 0 8px 32px 0 rgba(0, 122, 255, 0.15);
-            
+
+            --shadow-sm: 0 2px 4px 0 rgba(8, 47, 73, 0.06);
+            --shadow-md: 0 4px 12px 0 rgba(8, 47, 73, 0.08);
+            --shadow-lg: 0 8px 24px 0 rgba(8, 47, 73, 0.12);
+            --shadow-xl: 0 16px 48px 0 rgba(8, 47, 73, 0.16);
+            --shadow-2xl: 0 32px 64px 0 rgba(8, 47, 73, 0.20);
+            --shadow-blue: 0 8px 32px 0 rgba(14, 165, 233, 0.30);
+            --shadow-glass: 0 8px 32px 0 rgba(14, 165, 233, 0.18);
+
             --radius-sm: 0.625rem;
             --radius-md: 0.875rem;
             --radius-lg: 1.25rem;
             --radius-xl: 1.75rem;
             --radius-2xl: 2.5rem;
             --radius-3xl: 3rem;
-            
+
             --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -99,7 +106,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
             background: var(--bg-primary);
@@ -144,7 +151,7 @@
             display: flex;
             align-items: center;
             gap: 0.875rem;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 1.875rem;
             font-weight: 800;
             background: var(--primary-gradient);
@@ -225,39 +232,39 @@
             top: 0;
         }
 
-    .logo:hover {
-        transform: scale(1.05);
-    }
+        .logo:hover {
+            transform: scale(1.05);
+        }
 
-    .logo-icon {
-        width: 48px;
-        height: 48px;
-        border-radius: var(--radius-lg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.25rem;
-        box-shadow: var(--shadow-blue);
-        transition: all var(--transition-base);
-        position: relative;
-        overflow: hidden;
-    }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-blue);
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
 
-    .logo-icon::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-        transition: left 0.6s;
-    }
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
 
-    .logo:hover .logo-icon::before {
-        left: 100%;
-    }
+        .logo:hover .logo-icon::before {
+            left: 100%;
+        }
 
         .nav-links a:hover ion-icon {
             transform: scale(1.2) rotate(10deg);
@@ -354,7 +361,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             font-weight: 700;
             background: var(--primary-gradient);
@@ -477,7 +484,7 @@
         /* Hero Section */
         .hero {
             padding: 160px 0 120px;
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 50%, #00d4ff 100%);
+            background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
             position: relative;
             overflow: hidden;
         }
@@ -495,8 +502,13 @@
         }
 
         @keyframes floatGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(40px, 40px); }
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(40px, 40px);
+            }
         }
 
         .hero-content {
@@ -530,7 +542,7 @@
         }
 
         .hero h1 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: clamp(3rem, 6vw, 5rem);
             font-weight: 900;
             margin-bottom: 2rem;
@@ -573,7 +585,7 @@
             transition: all var(--transition-base);
             position: relative;
             overflow: hidden;
-            font-family: 'Inter', sans-serif;
+            font-family: 'Outfit', sans-serif;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -593,7 +605,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 122, 255, 0.1), transparent);
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
             transition: left 0.6s;
         }
 
@@ -604,7 +616,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1));
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(2, 132, 199, 0.1));
             opacity: 0;
             transition: opacity var(--transition-base);
             border-radius: var(--radius-xl);
@@ -681,7 +693,7 @@
         }
 
         .stat-number {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             background: var(--primary-gradient);
@@ -733,7 +745,7 @@
         }
 
         .section-title {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             margin-bottom: 1.5rem;
@@ -801,7 +813,7 @@
         }
 
         .feature-card h3 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--text-primary);
@@ -846,7 +858,7 @@
         }
 
         .showcase-text h2 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
@@ -965,11 +977,8 @@
         .phone-slider-container .phone-mockup {
             position: absolute;
             opacity: 0;
-            transform: 
-                translateX(100%) 
-                rotateY(45deg) 
-                scale(0.8)
-                translateZ(-100px);
+            transform:
+                translateX(100%) rotateY(45deg) scale(0.8) translateZ(-100px);
             transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transform-style: preserve-3d;
             background: transparent;
@@ -981,51 +990,36 @@
 
         .phone-slider-container .phone-mockup.active {
             opacity: 1;
-            transform: 
-                translateX(0) 
-                rotateY(0deg) 
-                scale(1)
-                translateZ(0);
+            transform:
+                translateX(0) rotateY(0deg) scale(1) translateZ(0);
             z-index: 10;
         }
 
         .phone-slider-container .phone-mockup.prev {
             opacity: 0.8;
-            transform: 
-                translateX(-120%) 
-                rotateY(-35deg) 
-                scale(0.85)
-                translateZ(-80px);
+            transform:
+                translateX(-120%) rotateY(-35deg) scale(0.85) translateZ(-80px);
             z-index: 5;
         }
 
         .phone-slider-container .phone-mockup.next {
             opacity: 0.8;
-            transform: 
-                translateX(120%) 
-                rotateY(35deg) 
-                scale(0.85)
-                translateZ(-80px);
+            transform:
+                translateX(120%) rotateY(35deg) scale(0.85) translateZ(-80px);
             z-index: 5;
         }
 
         .phone-slider-container .phone-mockup.far-prev {
             opacity: 0;
-            transform: 
-                translateX(-200%) 
-                rotateY(-45deg) 
-                scale(0.7)
-                translateZ(-150px);
+            transform:
+                translateX(-200%) rotateY(-45deg) scale(0.7) translateZ(-150px);
             z-index: 1;
         }
 
         .phone-slider-container .phone-mockup.far-next {
             opacity: 0;
-            transform: 
-                translateX(200%) 
-                rotateY(45deg) 
-                scale(0.7)
-                translateZ(-150px);
+            transform:
+                translateX(200%) rotateY(45deg) scale(0.7) translateZ(-150px);
             z-index: 1;
         }
 
@@ -1043,30 +1037,21 @@
 
         /* Enhanced 3D Hover Effects */
         .phone-slider-container .phone-mockup:hover {
-            transform: 
-                translateX(0) 
-                rotateY(0deg) 
-                scale(1.03)
-                translateZ(15px);
+            transform:
+                translateX(0) rotateY(0deg) scale(1.03) translateZ(15px);
             box-shadow: none;
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .phone-slider-container .phone-mockup.prev:hover {
-            transform: 
-                translateX(-110%) 
-                rotateY(-25deg) 
-                scale(0.88)
-                translateZ(-60px);
+            transform:
+                translateX(-110%) rotateY(-25deg) scale(0.88) translateZ(-60px);
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .phone-slider-container .phone-mockup.next:hover {
-            transform: 
-                translateX(110%) 
-                rotateY(25deg) 
-                scale(0.88)
-                translateZ(-60px);
+            transform:
+                translateX(110%) rotateY(25deg) scale(0.88) translateZ(-60px);
             transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
@@ -1112,7 +1097,8 @@
             display: flex;
             gap: 8px;
             padding: 8px 16px;
-            background: rgba(165, 200, 255, 0.3); /* Match mockup1 color */
+            background: rgba(165, 200, 255, 0.3);
+            /* Match mockup1 color */
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--radius-xl);
@@ -1120,25 +1106,29 @@
             transition: background 0.8s ease;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
+
         /* Dynamic dot container backgrounds for desktop */
         .showcase.bg-mockup1 .slider-indicators {
-            background: rgba(165, 200, 255, 0.3); /* #A5C8FF */
+            background: rgba(165, 200, 255, 0.3);
+            /* #A5C8FF */
             border-color: rgba(165, 200, 255, 0.4);
         }
-        
+
         .showcase.bg-mockup2 .slider-indicators {
-            background: rgba(255, 214, 232, 0.3); /* #FFD6E8 */
+            background: rgba(255, 214, 232, 0.3);
+            /* #FFD6E8 */
             border-color: rgba(255, 214, 232, 0.4);
         }
-        
+
         .showcase.bg-mockup3 .slider-indicators {
-            background: rgba(255, 243, 166, 0.3); /* #FFF3A6 */
+            background: rgba(255, 243, 166, 0.3);
+            /* #FFF3A6 */
             border-color: rgba(255, 243, 166, 0.4);
         }
-        
+
         .showcase.bg-mockup4 .slider-indicators {
-            background: rgba(215, 245, 208, 0.3); /* #D7F5D0 */
+            background: rgba(215, 245, 208, 0.3);
+            /* #D7F5D0 */
             border-color: rgba(215, 245, 208, 0.4);
         }
 
@@ -1162,11 +1152,12 @@
 
         /* Touch support for mobile - 3D Optimized */
         @media (max-width: 768px) {
+
             /* Hide arrow buttons on mobile */
             .slider-btn {
                 display: none;
             }
-            
+
             /* Show dots navigation on mobile */
             .slider-indicators {
                 position: absolute;
@@ -1176,7 +1167,8 @@
                 display: flex;
                 gap: 12px;
                 padding: 12px 20px;
-                background: rgba(165, 200, 255, 0.3); /* Match mockup1 color */
+                background: rgba(165, 200, 255, 0.3);
+                /* Match mockup1 color */
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 border-radius: 25px;
@@ -1184,28 +1176,32 @@
                 transition: background 0.8s ease;
                 border: 1px solid rgba(255, 255, 255, 0.2);
             }
-            
+
             /* Dynamic dot container backgrounds */
             .showcase.bg-mockup1 .slider-indicators {
-                background: rgba(165, 200, 255, 0.3); /* #A5C8FF */
+                background: rgba(165, 200, 255, 0.3);
+                /* #A5C8FF */
                 border-color: rgba(165, 200, 255, 0.4);
             }
-            
+
             .showcase.bg-mockup2 .slider-indicators {
-                background: rgba(255, 214, 232, 0.3); /* #FFD6E8 */
+                background: rgba(255, 214, 232, 0.3);
+                /* #FFD6E8 */
                 border-color: rgba(255, 214, 232, 0.4);
             }
-            
+
             .showcase.bg-mockup3 .slider-indicators {
-                background: rgba(255, 243, 166, 0.3); /* #FFF3A6 */
+                background: rgba(255, 243, 166, 0.3);
+                /* #FFF3A6 */
                 border-color: rgba(255, 243, 166, 0.4);
             }
-            
+
             .showcase.bg-mockup4 .slider-indicators {
-                background: rgba(215, 245, 208, 0.3); /* #D7F5D0 */
+                background: rgba(215, 245, 208, 0.3);
+                /* #D7F5D0 */
                 border-color: rgba(215, 245, 208, 0.4);
             }
-            
+
             .indicator {
                 width: 12px;
                 height: 12px;
@@ -1215,17 +1211,17 @@
                 transition: all 0.3s ease;
                 will-change: transform;
             }
-            
+
             .indicator.active {
                 background: white;
                 transform: scale(1.2);
                 box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
             }
-            
+
             .indicator:hover {
                 background: rgba(255, 255, 255, 0.7);
             }
-            
+
             /* Hardware acceleration for smooth animations */
             .phone-slider-container,
             .phone-slider-container .phone-mockup,
@@ -1239,105 +1235,109 @@
                 -webkit-backface-visibility: hidden;
                 -webkit-perspective: 1000px;
             }
-            
+
             .phone-slider {
                 max-width: 400px;
                 perspective: 800px;
             }
-            
+
             .phone-slider-container {
                 height: 600px;
-                cursor: grab; /* Add grab cursor for touch indication */
+                cursor: grab;
+                /* Add grab cursor for touch indication */
             }
-            
+
             .phone-slider-container:active {
-                cursor: grabbing; /* Change cursor when dragging */
+                cursor: grabbing;
+                /* Change cursor when dragging */
             }
-            
+
             .phone-slider-container .phone-mockup {
                 width: 300px;
                 height: 550px;
-                cursor: pointer; /* Make mockup clickable */
+                cursor: pointer;
+                /* Make mockup clickable */
             }
-            
+
             /* Optimized mobile animations - reduced complexity */
             .phone-slider-container .phone-mockup {
                 transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
                 will-change: transform, opacity;
             }
-            
+
             .phone-slider-container .phone-mockup.active {
                 transform: translateX(0) scale(1);
             }
-            
+
             .phone-slider-container .phone-mockup.prev {
                 transform: translateX(-100%) scale(0.85);
             }
-            
+
             .phone-slider-container .phone-mockup.next {
                 transform: translateX(100%) scale(0.85);
             }
-            
+
             .phone-slider-container .phone-mockup.far-prev,
             .phone-slider-container .phone-mockup.far-next {
                 opacity: 0;
                 transform: translateX(0) scale(0) translateZ(-200px);
             }
-            
+
             /* Disable 3D transforms on mobile for better performance */
             .phone-slider-container .phone-mockup:hover {
                 transform: translateX(0) scale(1.02);
             }
-            
+
             .phone-slider-container .phone-mockup.prev:hover {
                 transform: translateX(-100%) scale(0.88);
             }
-            
+
             .phone-slider-container .phone-mockup.next:hover {
                 transform: translateX(100%) scale(0.88);
             }
-            
+
             /* Reduce background transition complexity on mobile */
             .showcase {
                 transition: background 0.6s ease;
             }
-            
+
             /* Optimize hero animations for mobile */
             .hero {
                 padding: 120px 0 80px;
             }
-            
+
             /* Disable parallax on mobile for better performance */
             .hero::before {
                 animation: none;
             }
-            
+
             /* Optimize feature cards animations */
             .feature-card {
                 transition: all 0.3s ease;
                 will-change: transform;
             }
-            
+
             .feature-card:hover {
                 transform: translateY(-4px);
             }
-            
+
             /* Disable complex hover effects on mobile */
             .feature-icon::before {
                 display: none;
             }
-            
+
             .feature-card:hover .feature-icon {
                 transform: scale(1.05);
             }
         }
 
         @media (max-width: 480px) {
+
             /* Hide arrow buttons on small mobile */
             .slider-btn {
                 display: none !important;
             }
-            
+
             /* Enhanced dots for small mobile */
             .slider-indicators {
                 position: absolute;
@@ -1347,7 +1347,8 @@
                 display: flex;
                 gap: 10px;
                 padding: 10px 16px;
-                background: rgba(165, 200, 255, 0.3); /* Match mockup1 color */
+                background: rgba(165, 200, 255, 0.3);
+                /* Match mockup1 color */
                 backdrop-filter: blur(8px);
                 -webkit-backdrop-filter: blur(8px);
                 border-radius: 20px;
@@ -1355,28 +1356,32 @@
                 transition: background 0.8s ease;
                 border: 1px solid rgba(255, 255, 255, 0.2);
             }
-            
+
             /* Dynamic dot container backgrounds for small mobile */
             .showcase.bg-mockup1 .slider-indicators {
-                background: rgba(165, 200, 255, 0.3); /* #A5C8FF */
+                background: rgba(165, 200, 255, 0.3);
+                /* #A5C8FF */
                 border-color: rgba(165, 200, 255, 0.4);
             }
-            
+
             .showcase.bg-mockup2 .slider-indicators {
-                background: rgba(255, 214, 232, 0.3); /* #FFD6E8 */
+                background: rgba(255, 214, 232, 0.3);
+                /* #FFD6E8 */
                 border-color: rgba(255, 214, 232, 0.4);
             }
-            
+
             .showcase.bg-mockup3 .slider-indicators {
-                background: rgba(255, 243, 166, 0.3); /* #FFF3A6 */
+                background: rgba(255, 243, 166, 0.3);
+                /* #FFF3A6 */
                 border-color: rgba(255, 243, 166, 0.4);
             }
-            
+
             .showcase.bg-mockup4 .slider-indicators {
-                background: rgba(215, 245, 208, 0.3); /* #D7F5D0 */
+                background: rgba(215, 245, 208, 0.3);
+                /* #D7F5D0 */
                 border-color: rgba(215, 245, 208, 0.4);
             }
-            
+
             .indicator {
                 width: 10px;
                 height: 10px;
@@ -1385,88 +1390,88 @@
                 cursor: pointer;
                 transition: all 0.3s ease;
             }
-            
+
             .indicator.active {
                 background: white;
                 transform: scale(1.1);
                 box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
             }
-            
+
             .indicator:hover {
                 background: rgba(255, 255, 255, 0.7);
             }
-            
+
             .phone-slider {
                 max-width: 320px;
                 perspective: 600px;
             }
-            
+
             .phone-slider-container {
                 height: 520px;
                 cursor: grab;
             }
-            
+
             .phone-slider-container:active {
                 cursor: grabbing;
             }
-            
+
             .phone-slider-container .phone-mockup {
                 width: 250px;
                 height: 480px;
                 cursor: pointer;
             }
-            
+
             /* Ultra-optimized animations for small mobile */
             .phone-slider-container .phone-mockup {
                 transition: all 0.8s ease;
                 will-change: transform, opacity;
             }
-            
+
             .phone-slider-container .phone-mockup.active {
                 transform: translateX(0) scale(1);
             }
-            
+
             .phone-slider-container .phone-mockup.prev {
                 transform: translateX(-90%) scale(0.8);
             }
-            
+
             .phone-slider-container .phone-mockup.next {
                 transform: translateX(90%) scale(0.8);
             }
-            
+
             /* Disable all hover effects on small mobile for performance */
             .phone-slider-container .phone-mockup:hover {
                 transform: none;
             }
-            
+
             /* Disable background transitions on small mobile */
             .showcase {
                 transition: none;
             }
-            
+
             /* Minimal feature card animations */
             .feature-card {
                 transition: all 0.2s ease;
             }
-            
+
             .feature-card:hover {
                 transform: translateY(-2px);
             }
-            
+
             /* Disable all complex effects */
             .feature-icon::before {
                 display: none !important;
             }
-            
+
             .feature-card:hover .feature-icon {
                 transform: none;
             }
-            
+
             /* Optimize button animations */
             .btn {
                 transition: all 0.2s ease;
             }
-            
+
             .btn:hover {
                 transform: translateY(-1px);
             }
@@ -1475,7 +1480,7 @@
         /* Download Section */
         .download {
             padding: 100px 0;
-            background: linear-gradient(135deg, #007aff 0%, #5856d6 50%, #00b4d8 100%);
+            background: linear-gradient(135deg, #0284c7 0%, #0ea5e9 50%, #38bdf8 100%);
             position: relative;
             overflow: hidden;
         }
@@ -1499,7 +1504,7 @@
         }
 
         .download h2 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 700;
             margin-bottom: 1.5rem;
@@ -1590,7 +1595,7 @@
         }
 
         .footer-brand h3 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
             background: var(--primary-gradient);
@@ -1641,6 +1646,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1652,6 +1658,7 @@
                 opacity: 0;
                 transform: translateY(-30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -1663,11 +1670,11 @@
             .container {
                 max-width: 960px;
             }
-            
+
             .nav-links {
                 gap: 2rem;
             }
-            
+
             .hero h1 {
                 font-size: clamp(2.5rem, 5vw, 4rem);
             }
@@ -1677,7 +1684,7 @@
             .container {
                 max-width: 720px;
             }
-            
+
             .showcase-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -1691,20 +1698,20 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 2rem;
             }
-            
+
             .nav-links {
                 gap: 1.5rem;
             }
-            
+
             .nav-links a {
                 padding: 0.5rem 0.75rem;
                 font-size: 0.875rem;
             }
-            
+
             .nav-links a ion-icon {
                 font-size: 1rem;
             }
-            
+
             .nav-cta {
                 padding: 0.75rem 1.5rem;
                 font-size: 0.875rem;
@@ -1716,16 +1723,16 @@
                 max-width: 540px;
                 padding: 0 1rem;
             }
-            
+
             /* Hide Desktop Navigation */
             .nav-links {
                 display: none;
             }
-            
+
             .nav-cta {
                 display: none;
             }
-            
+
             /* Show Mobile Menu Toggle */
             .menu-toggle {
                 display: block;
@@ -1735,12 +1742,12 @@
             .logo {
                 font-size: 1.5rem;
             }
-            
+
             .logo-icon {
                 width: 40px;
                 height: 40px;
             }
-            
+
             .logo-icon img {
                 width: 24px !important;
                 height: 24px !important;
@@ -1761,7 +1768,7 @@
                 font-size: clamp(1rem, 4vw, 1.25rem);
                 margin-bottom: 2.5rem;
             }
-            
+
             .hero-badge {
                 font-size: 0.8rem;
                 padding: 0.5rem 1rem;
@@ -1773,7 +1780,7 @@
                 flex-direction: column;
                 align-items: center;
             }
-            
+
             .btn {
                 padding: 1rem 2rem;
                 font-size: 1rem;
@@ -1786,7 +1793,7 @@
             .section-title {
                 font-size: clamp(1.75rem, 6vw, 2.5rem);
             }
-            
+
             .section-subtitle {
                 font-size: 1rem;
             }
@@ -1795,17 +1802,17 @@
             .features {
                 padding: 80px 0;
             }
-            
+
             .features-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
-            
+
             .feature-card {
                 padding: 2rem;
                 text-align: center;
             }
-            
+
             .feature-icon {
                 margin: 0 auto 1.25rem;
             }
@@ -1814,12 +1821,12 @@
             .stats {
                 padding: 3rem 0;
             }
-            
+
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
             }
-            
+
             .stat-number {
                 font-size: 2rem;
             }
@@ -1828,11 +1835,11 @@
             .showcase {
                 padding: 80px 0;
             }
-            
+
             .showcase-text h2 {
                 font-size: clamp(1.75rem, 6vw, 2.25rem);
             }
-            
+
             .phone-mockup {
                 max-width: 250px;
             }
@@ -1841,11 +1848,11 @@
             .download {
                 padding: 80px 0;
             }
-            
+
             .download h2 {
                 font-size: clamp(1.75rem, 6vw, 2.5rem);
             }
-            
+
             .download p {
                 font-size: 1rem;
                 margin-bottom: 2.5rem;
@@ -1869,7 +1876,7 @@
                 text-align: center;
                 gap: 2rem;
             }
-            
+
             footer {
                 padding: 3rem 0 1.5rem;
             }
@@ -1879,58 +1886,59 @@
             .container {
                 padding: 0 0.75rem;
             }
-            
+
             /* Sidebar adjustments for small screens */
             .sidebar {
                 width: 280px;
             }
-            
+
             .hero {
                 padding: 100px 0 60px;
             }
-            
+
             .hero h1 {
                 font-size: clamp(1.75rem, 10vw, 2.5rem);
             }
-            
+
             .btn {
                 padding: 0.875rem 1.75rem;
                 font-size: 0.9rem;
             }
-            
+
             .features {
                 padding: 60px 0;
             }
-            
+
             .feature-card {
                 padding: 1.5rem;
             }
-            
+
             .stats-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
-            
+
             .download-btn {
                 padding: 1rem 1.5rem;
             }
-            
+
             .download-btn .icon {
                 width: 40px;
                 height: 40px;
                 font-size: 1.25rem;
             }
-            
+
             .download-btn .title {
                 font-size: 0.95rem;
             }
-            
+
             .download-btn .subtitle {
                 font-size: 0.8rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav id="navbar">
@@ -1938,11 +1946,12 @@
             <div class="nav-content">
                 <div class="logo">
                     <div class="logo-icon">
-                        <img src="assets/app-icon.png" alt="DailyFlow" style="width: 32px; height: 32px; border-radius: 8px;">
+                        <img src="assets/app-icon.png" alt="DailyFlow"
+                            style="width: 32px; height: 32px; border-radius: 8px;">
                     </div>
                     DailyFlow
                 </div>
-                
+
                 <!-- Desktop Navigation -->
                 <ul class="nav-links">
                     <li>
@@ -1969,13 +1978,19 @@
                             <span>Download</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="docs.html">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <span>Docs</span>
+                        </a>
+                    </li>
                 </ul>
-                
+
                 <a href="#download" class="nav-cta">
                     <ion-icon name="rocket-launch-outline"></ion-icon>
                     Download Gratis
                 </a>
-                
+
                 <!-- Mobile Menu Toggle -->
                 <button class="menu-toggle" id="menuToggle">
                     <ion-icon name="menu-outline"></ion-icon>
@@ -1989,7 +2004,8 @@
         <div class="sidebar-header">
             <div class="sidebar-logo">
                 <div class="logo-icon" style="width: 40px; height: 40px;">
-                    <img src="assets/app-icon.png" alt="DailyFlow" style="width: 24px; height: 24px; border-radius: 6px;">
+                    <img src="assets/app-icon.png" alt="DailyFlow"
+                        style="width: 24px; height: 24px; border-radius: 6px;">
                 </div>
                 DailyFlow
             </div>
@@ -1997,7 +2013,7 @@
                 <ion-icon name="close-outline"></ion-icon>
             </button>
         </div>
-        
+
         <ul class="sidebar-links">
             <li>
                 <a href="#home" class="sidebar-link">
@@ -2024,7 +2040,7 @@
                 </a>
             </li>
         </ul>
-        
+
         <a href="#download" class="sidebar-cta">
             <ion-icon name="rocket-launch-outline"></ion-icon>
             Download Gratis
@@ -2043,7 +2059,8 @@
                     <span>Productivity Reimagined</span>
                 </div>
                 <h1>Productivity App untuk Modern Life</h1>
-                <p class="hero-subtitle">Kelola tugas, tracking kebiasaan, dan capai goals dengan smart notifications dan analytics yang intuitif.</p>
+                <p class="hero-subtitle">Kelola tugas, tracking kebiasaan, dan capai goals dengan smart notifications
+                    dan analytics yang intuitif.</p>
                 <div class="hero-buttons">
                     <a href="#download" class="btn btn-primary">
                         <ion-icon name="download-outline"></ion-icon>
@@ -2091,7 +2108,8 @@
                     <span>Fitur Unggulan</span>
                 </div>
                 <h2 class="section-title">Semua yang Anda Butuhkan untuk Produktivitas</h2>
-                <p class="section-subtitle">Dari task management hingga habit tracking, semua dalam satu aplikasi modern.</p>
+                <p class="section-subtitle">Dari task management hingga habit tracking, semua dalam satu aplikasi
+                    modern.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
@@ -2099,42 +2117,48 @@
                         <ion-icon name="list-outline"></ion-icon>
                     </div>
                     <h3>Smart Task Management</h3>
-                    <p>Kelola tugas harian dengan deadline, prioritas, dan notifikasi pengingat yang terorganisir per kategori. Sistem pencarian real-time untuk menemukan tugas dengan cepat.</p>
+                    <p>Kelola tugas harian dengan deadline, prioritas, dan notifikasi pengingat yang terorganisir per
+                        kategori. Sistem pencarian real-time untuk menemukan tugas dengan cepat.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <ion-icon name="repeat-outline"></ion-icon>
                     </div>
                     <h3>Habit Tracking System</h3>
-                    <p>Bangun kebiasaan positif dengan sistem tracking harian, reminder otomatis, dan statistik perkembangan yang detail. Monitor streak dan achievement Anda.</p>
+                    <p>Bangun kebiasaan positif dengan sistem tracking harian, reminder otomatis, dan statistik
+                        perkembangan yang detail. Monitor streak dan achievement Anda.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <ion-icon name="notifications-outline"></ion-icon>
                     </div>
                     <h3>Intelligent Notifications</h3>
-                    <p>Notifikasi pintar yang terorganisir per kategori (tasks & habits) dengan timing yang akurat. Channel-based system untuk mencegah konflik notifikasi.</p>
+                    <p>Notifikasi pintar yang terorganisir per kategori (tasks & habits) dengan timing yang akurat.
+                        Channel-based system untuk mencegah konflik notifikasi.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <ion-icon name="search-outline"></ion-icon>
                     </div>
                     <h3>Real-time Search</h3>
-                    <p>Temukan tugas dan kebiasaan dengan mudah menggunakan fitur search real-time yang intuitif. Search berdasarkan title dan description.</p>
+                    <p>Temukan tugas dan kebiasaan dengan mudah menggunakan fitur search real-time yang intuitif. Search
+                        berdasarkan title dan description.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <ion-icon name="bar-chart-outline"></ion-icon>
                     </div>
                     <h3>Analytics Dashboard</h3>
-                    <p>Monitor perkembangan produktivitas Anda dengan dashboard statistik yang informatif. Track completion rate, daily progress, dan trends.</p>
+                    <p>Monitor perkembangan produktivitas Anda dengan dashboard statistik yang informatif. Track
+                        completion rate, daily progress, dan trends.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <ion-icon name="moon-outline"></ion-icon>
                     </div>
                     <h3>Dark Mode Support</h3>
-                    <p>Nyaman digunakan di segala kondisi dengan tema gelap yang modern dan eye-friendly. Automatic theme switching berdasarkan preferensi.</p>
+                    <p>Nyaman digunakan di segala kondisi dengan tema gelap yang modern dan eye-friendly. Automatic
+                        theme switching berdasarkan preferensi.</p>
                 </div>
             </div>
         </div>
@@ -2146,7 +2170,8 @@
             <div class="showcase-content">
                 <div class="showcase-text">
                     <h2>Desain Modern, User Experience Terbaik</h2>
-                    <p>DailyFlow dirancang dengan fokus pada user experience yang intuitif dan modern. Setiap fitur dibuat untuk memudahkan hidup Anda.</p>
+                    <p>DailyFlow dirancang dengan fokus pada user experience yang intuitif dan modern. Setiap fitur
+                        dibuat untuk memudahkan hidup Anda.</p>
                     <ul class="showcase-features">
                         <li>
                             <span class="icon">✓</span>
@@ -2177,23 +2202,23 @@
                             <div class="phone-mockup active">
                                 <img src="img/mockup1.png" alt="Dashboard Design" class="phone-mockup-image">
                             </div>
-                            
+
                             <!-- Phone Mockup 2 - Task List -->
                             <div class="phone-mockup">
                                 <img src="img/mockup2.png" alt="Task List Design" class="phone-mockup-image">
                             </div>
-                            
+
                             <!-- Phone Mockup 3 - Statistics -->
                             <div class="phone-mockup">
                                 <img src="img/mockup3.png" alt="Statistics Design" class="phone-mockup-image">
                             </div>
-                            
+
                             <!-- Phone Mockup 4 - Profile -->
                             <div class="phone-mockup">
                                 <img src="img/mockup4.png" alt="Profile Design" class="phone-mockup-image">
                             </div>
                         </div>
-                        
+
                         <!-- Slider Controls -->
                         <button class="slider-btn prev-btn" id="phoneSliderPrev">
                             <ion-icon name="chevron-back-outline"></ion-icon>
@@ -2201,7 +2226,7 @@
                         <button class="slider-btn next-btn" id="phoneSliderNext">
                             <ion-icon name="chevron-forward-outline"></ion-icon>
                         </button>
-                        
+
                         <!-- Slider Indicators -->
                         <div class="slider-indicators">
                             <span class="indicator active" data-slide="0"></span>
@@ -2226,13 +2251,34 @@
                 <h2>Mulai Perjalanan Produktivitas Anda</h2>
                 <p>Download DailyFlow sekarang dan rasakan perbedaan dalam produktivitas harian Anda.</p>
                 <div class="download-buttons">
-                    <a href="https://Randa23356.github.io/dailyflow/assets/dailyflow.apk" class="download-btn" id="android-download">
+                    <a href="https://Randa23356.github.io/dailyflow/assets/dailyflow-universal.apk"
+                        class="download-btn android-apk-btn" id="android-universal" data-apk="dailyflow-universal.apk">
                         <div class="icon android">
                             <ion-icon name="logo-android"></ion-icon>
                         </div>
                         <div class="content">
-                            <div class="title">Download untuk Android</div>
-                            <div class="subtitle">APK • Versi Terbaru • Gratis</div>
+                            <div class="title">Android (Universal)</div>
+                            <div class="subtitle">APK • Semua HP</div>
+                        </div>
+                    </a>
+                    <a href="https://Randa23356.github.io/dailyflow/assets/dailyflow-arm64-v8a.apk"
+                        class="download-btn android-apk-btn" id="android-arm64" data-apk="dailyflow-arm64-v8a.apk">
+                        <div class="icon android">
+                            <ion-icon name="logo-android"></ion-icon>
+                        </div>
+                        <div class="content">
+                            <div class="title">Android (ARM64)</div>
+                            <div class="subtitle">APK • HP Modern (64-bit)</div>
+                        </div>
+                    </a>
+                    <a href="https://Randa23356.github.io/dailyflow/assets/dailyflow-armeabi-v7a.apk"
+                        class="download-btn android-apk-btn" id="android-arm32" data-apk="dailyflow-armeabi-v7a.apk">
+                        <div class="icon android">
+                            <ion-icon name="logo-android"></ion-icon>
+                        </div>
+                        <div class="content">
+                            <div class="title">Android (ARM32)</div>
+                            <div class="subtitle">APK • HP Lama (32-bit)</div>
                         </div>
                     </a>
                     <a href="https://github.com/Randa23356" class="download-btn" id="source-code">
@@ -2255,7 +2301,8 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>DailyFlow</h3>
-                    <p>Aplikasi produktivitas modern untuk mengelola tugas harian dan membangun kebiasaan baik. Dibuat dengan menggunakan teknologi terkini.</p>
+                    <p>Aplikasi produktivitas modern untuk mengelola tugas harian dan membangun kebiasaan baik. Dibuat
+                        dengan menggunakan teknologi terkini.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Produk</h4>
@@ -2333,7 +2380,7 @@
         }
 
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('nav-scrolled');
@@ -2386,7 +2433,7 @@
             const text = heroTitle.textContent;
             heroTitle.textContent = '';
             let index = 0;
-            
+
             function typeText() {
                 if (index < text.length) {
                     heroTitle.textContent += text.charAt(index);
@@ -2394,7 +2441,7 @@
                     setTimeout(typeText, 50);
                 }
             }
-            
+
             setTimeout(typeText, 1000);
         }
 
@@ -2408,33 +2455,37 @@
         });
 
         // Download button loading state
-        const downloadBtn = document.querySelector('.download-btn');
-        if (downloadBtn) {
-            downloadBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Add loading state
-                const originalContent = this.innerHTML;
-                this.innerHTML = '<ion-icon name="download-outline"></ion-icon> Downloading...';
-                this.style.pointerEvents = 'none';
-                this.style.opacity = '0.7';
-                
-                // Simulate download
-                setTimeout(() => {
-                    // Start actual download
-                    window.location.href = 'dailyflow.apk';
-                    
-                    // Reset button
-                    this.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> Downloaded!';
-                    this.style.background = 'linear-gradient(135deg, #00ff88 0%, #00d4ff 100%)';
-                    
+        const downloadBtns = document.querySelectorAll('.android-apk-btn');
+        if (downloadBtns.length > 0) {
+            downloadBtns.forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const apkName = this.dataset.apk || 'dailyflow.apk';
+
+                    // Add loading state
+                    const originalContent = this.innerHTML;
+                    this.innerHTML = '<ion-icon name="download-outline"></ion-icon> Downloading...';
+                    this.style.pointerEvents = 'none';
+                    this.style.opacity = '0.7';
+
+                    // Simulate download
                     setTimeout(() => {
-                        this.innerHTML = originalContent;
-                        this.style.pointerEvents = '';
-                        this.style.opacity = '';
-                        this.style.background = '';
-                    }, 2000);
-                }, 1500);
+                        // Start actual download
+                        window.location.href = apkName;
+
+                        // Reset button
+                        this.innerHTML = '<ion-icon name="checkmark-outline"></ion-icon> Downloaded!';
+                        this.style.background = 'linear-gradient(135deg, #10b981 0%, #0ea5e9 100%)';
+
+                        setTimeout(() => {
+                            this.innerHTML = originalContent;
+                            this.style.pointerEvents = '';
+                            this.style.opacity = '';
+                            this.style.background = '';
+                        }, 2000);
+                    }, 1500);
+                });
             });
         }
 
@@ -2451,7 +2502,7 @@
                 this.touchStartX = 0;
                 this.touchEndX = 0;
                 this.isAnimating = false;
-                
+
                 this.init();
             }
 
@@ -2461,17 +2512,17 @@
                     this.prevBtn.addEventListener('click', () => this.prevSlide());
                     this.nextBtn.addEventListener('click', () => this.nextSlide());
                 }
-                
+
                 // Indicator controls
                 this.indicators.forEach((indicator, index) => {
                     indicator.addEventListener('click', () => this.goToSlide(index));
                 });
-                
+
                 // Touch/swipe support
                 const container = document.querySelector('.phone-slider-container');
                 container.addEventListener('touchstart', (e) => this.handleTouchStart(e), { passive: true });
                 container.addEventListener('touchend', (e) => this.handleTouchEnd(e), { passive: true });
-                
+
                 // Click on mockup to change slide (mobile enhancement)
                 this.mockups.forEach((mockup, index) => {
                     mockup.addEventListener('click', () => {
@@ -2485,17 +2536,17 @@
                         }
                     });
                 });
-                
+
                 // Auto-play
                 this.startAutoPlay();
-                
+
                 // Pause auto-play on hover (desktop only)
                 const slider = document.querySelector('.phone-slider');
                 if (window.innerWidth > 768) {
                     slider.addEventListener('mouseenter', () => this.stopAutoPlay());
                     slider.addEventListener('mouseleave', () => this.startAutoPlay());
                 }
-                
+
                 // Keyboard navigation
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowLeft') this.prevSlide();
@@ -2510,7 +2561,7 @@
                 // Update mockups with 3D animation classes
                 this.mockups.forEach((mockup, index) => {
                     mockup.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
-                    
+
                     if (index === this.currentSlide) {
                         mockup.classList.add('active');
                     } else if (index === this.getPrevIndex()) {
@@ -2523,7 +2574,7 @@
                         mockup.classList.add('far-next');
                     }
                 });
-                
+
                 // Update indicators
                 this.indicators.forEach((indicator, index) => {
                     indicator.classList.toggle('active', index === this.currentSlide);
@@ -2538,7 +2589,7 @@
                 if (showcaseSection) {
                     // Remove all background classes
                     showcaseSection.classList.remove('bg-mockup1', 'bg-mockup2', 'bg-mockup3', 'bg-mockup4');
-                    
+
                     // Add appropriate background class based on current slide
                     const bgClass = `bg-mockup${this.currentSlide + 1}`;
                     showcaseSection.classList.add(bgClass);
@@ -2551,7 +2602,7 @@
                 this.currentSlide = this.getNextIndex();
                 this.updateSlides();
                 this.resetAutoPlay();
-                
+
                 // Reset animation lock after transition completes
                 setTimeout(() => {
                     this.isAnimating = false;
@@ -2564,7 +2615,7 @@
                 this.currentSlide = this.getPrevIndex();
                 this.updateSlides();
                 this.resetAutoPlay();
-                
+
                 // Reset animation lock after transition completes
                 setTimeout(() => {
                     this.isAnimating = false;
@@ -2577,7 +2628,7 @@
                 this.currentSlide = index;
                 this.updateSlides();
                 this.resetAutoPlay();
-                
+
                 // Reset animation lock after transition completes
                 setTimeout(() => {
                     this.isAnimating = false;
@@ -2629,7 +2680,7 @@
             handleSwipe() {
                 const swipeThreshold = 50;
                 const diff = this.touchStartX - this.touchEndX;
-                
+
                 if (Math.abs(diff) > swipeThreshold) {
                     if (diff > 0) {
                         this.nextSlide(); // Swipe left, go next
@@ -2645,6 +2696,7 @@
             new PhoneSlider();
         });
 
-        </script>
+    </script>
 </body>
+
 </html>

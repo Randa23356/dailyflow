@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DailyFlow - Documentation</title>
+    <meta name="description"
+        content="Dokumentasi lengkap DailyFlow - Panduan penggunaan, fitur, dan FAQ aplikasi produktivitas.">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/app-icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            --primary-color: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #38bdf8;
+            --accent-color: #38bdf8;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --error-color: #ef4444;
+            --text-primary: #082f49;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f0f9ff;
+            --bg-sidebar: #082f49;
+            --bg-sidebar-hover: rgba(14, 165, 233, 0.15);
+            --bg-code: #0f172a;
+            --border-color: #bae6fd;
+            --border-light: #e0f2fe;
+            --shadow-sm: 0 2px 4px rgba(8, 47, 73, 0.06);
+            --shadow-md: 0 4px 12px rgba(8, 47, 73, 0.08);
+            --shadow-lg: 0 8px 24px rgba(8, 47, 73, 0.12);
+            --shadow-blue: 0 8px 32px rgba(14, 165, 233, 0.25);
+            --radius-sm: 0.5rem;
+            --radius-md: 0.875rem;
+            --radius-lg: 1.25rem;
+            --radius-xl: 1.75rem;
+            --sidebar-width: 280px;
+            --topbar-height: 64px;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            line-height: 1.7;
+        }
+
+        /* ─── TOP BAR ─── */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--topbar-height);
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-light);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .topbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .topbar-logo {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .topbar-logo img {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-sm);
+            object-fit: cover;
+        }
+
+        .topbar-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .topbar-badge {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 2rem;
+            padding: 0.2rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .topbar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.375rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.5rem 0.875rem;
+            border-radius: var(--radius-md);
+            transition: all var(--transition);
+        }
+
+        .topbar-link:hover {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+
+        .topbar-cta {
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-blue);
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .topbar-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            padding: 0.5rem;
+            border-radius: var(--radius-sm);
+        }
+
+        /* ─── LAYOUT ─── */
+        .layout {
+            display: flex;
+            margin-top: var(--topbar-height);
+            min-height: calc(100vh - var(--topbar-height));
+        }
+
+        /* ─── SIDEBAR ─── */
+        .sidebar {
+            position: fixed;
+            top: var(--topbar-height);
+            left: 0;
+            width: var(--sidebar-width);
+            height: calc(100vh - var(--topbar-height));
+            background: var(--bg-sidebar);
+            overflow-y: auto;
+            padding: 1.5rem 0;
+            z-index: 90;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+            transition: transform var(--transition);
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+
+        .sidebar-section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.4);
+            padding: 1rem 1.5rem 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+            transition: all var(--transition);
+        }
+
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            color: white;
+            background: var(--bg-sidebar-hover);
+            border-left-color: var(--primary-light);
+        }
+
+        .sidebar-nav a ion-icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+
+        .sidebar-nav a:hover ion-icon,
+        .sidebar-nav a.active ion-icon {
+            opacity: 1;
+        }
+
+        .sidebar-nav .sub-link {
+            padding-left: 3.25rem;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        /* ─── MAIN CONTENT ─── */
+        .main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 3rem 3.5rem;
+            max-width: 900px;
+        }
+
+        /* ─── DOC SECTION ─── */
+        .doc-section {
+            margin-bottom: 4rem;
+            scroll-margin-top: calc(var(--topbar-height) + 2rem);
+        }
+
+        .section-anchor {
+            scroll-margin-top: calc(var(--topbar-height) + 2rem);
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 2rem;
+            padding: 0.3rem 0.875rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 0.875rem;
+        }
+
+        h1.doc-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+
+        .doc-lead {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 680px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.875rem;
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        ul,
+        ol {
+            color: var(--text-secondary);
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* ─── CALLOUT ─── */
+        .callout {
+            display: flex;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            border-radius: var(--radius-lg);
+            margin: 1.5rem 0;
+            border: 1px solid;
+        }
+
+        .callout-icon {
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .callout-content {
+            flex: 1;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .callout-body {
+            font-size: 0.9rem;
+            color: inherit;
+            margin: 0;
+        }
+
+        .callout-info {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1e40af;
+        }
+
+        .callout-tip {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .callout-warning {
+            background: #fffbeb;
+            border-color: #fde68a;
+            color: #92400e;
+        }
+
+        /* ─── FEATURE CARDS ─── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .feature-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            transition: all var(--transition);
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .feature-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-md);
+            background: var(--primary-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 0.875rem;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            font-size: 1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        /* ─── STEPS ─── */
+        .steps {
+            margin: 1.5rem 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary-gradient);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-blue);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* ─── TABLE ─── */
+        .doc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .doc-table thead tr {
+            background: var(--bg-sidebar);
+            color: white;
+        }
+
+        .doc-table th {
+            padding: 0.875rem 1.25rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .doc-table td {
+            padding: 0.875rem 1.25rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+
+        .doc-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .doc-table tbody tr:hover {
+            background: var(--bg-secondary);
+        }
+
+        /* ─── FAQ ─── */
+        .faq-item {
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-lg);
+            margin-bottom: 0.875rem;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-align: left;
+            transition: all var(--transition);
+        }
+
+        .faq-question:hover {
+            background: var(--bg-secondary);
+        }
+
+        .faq-question.open {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+        }
+
+        .faq-question .faq-icon {
+            transition: transform var(--transition);
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .faq-question.open .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 400px;
+        }
+
+        .faq-answer-inner {
+            padding: 0 1.5rem 1.25rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            border: none;
+            height: 1px;
+            background: var(--border-light);
+            margin: 3rem 0;
+        }
+
+        /* ─── INLINE CODE ─── */
+        code {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-light);
+            border-radius: 0.3rem;
+            padding: 0.15rem 0.45rem;
+            font-size: 0.85em;
+            font-family: 'Courier New', monospace;
+            color: var(--primary-dark);
+        }
+
+        /* ─── BREADCRUMB ─── */
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ─── ON THIS PAGE ─── */
+        .toc {
+            position: sticky;
+            top: calc(var(--topbar-height) + 2rem);
+            float: right;
+            width: 210px;
+            margin-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .toc-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 0.875rem;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 0.4rem;
+        }
+
+        .toc-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.83rem;
+            display: block;
+            padding: 0.2rem 0.5rem;
+            border-left: 2px solid var(--border-light);
+            transition: all var(--transition);
+        }
+
+        .toc-list a:hover,
+        .toc-list a.active {
+            color: var(--primary-color);
+            border-left-color: var(--primary-color);
+            background: var(--bg-secondary);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            .toc {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+                padding: 2rem 1.25rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .topbar-right .topbar-link {
+                display: none;
+            }
+
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 80;
+            }
+
+            .sidebar-overlay.open {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- TOP BAR -->
+    <nav class="topbar">
+        <div style="display:flex;align-items:center;gap:1rem">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <ion-icon name="menu-outline"></ion-icon>
+            </button>
+            <a href="index.html" class="topbar-brand">
+                <div class="topbar-logo">
+                    <img src="assets/app-icon.png" alt="DailyFlow"
+                        onerror="this.style.display='none';this.parentElement.innerHTML='<ion-icon name=&quot;water-outline&quot; style=&quot;font-size:1.2rem&quot;></ion-icon>'">
+                </div>
+                <span class="topbar-title">DailyFlow</span>
+                <span class="topbar-badge">Docs</span>
+            </a>
+        </div>
+        <div class="topbar-right">
+            <a href="index.html" class="topbar-link"><ion-icon name="home-outline"></ion-icon> Beranda</a>
+            <a href="index.html#download" class="topbar-link"><ion-icon name="download-outline"></ion-icon> Download</a>
+            <a href="index.html#download" class="topbar-cta"><ion-icon name="logo-android"></ion-icon> Download
+                Gratis</a>
+        </div>
+    </nav>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="layout">
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <p class="sidebar-section-title">Memulai</p>
+            <ul class="sidebar-nav">
+                <li><a href="#pengenalan" class="active"><ion-icon name="rocket-outline"></ion-icon> Pengenalan</a></li>
+                <li><a href="#installasi"><ion-icon name="download-outline"></ion-icon> Instalasi</a></li>
+                <li><a href="#persyaratan"><ion-icon name="phone-portrait-outline"></ion-icon> Persyaratan</a></li>
+            </ul>
+
+            <p class="sidebar-section-title">Fitur Utama</p>
+            <ul class="sidebar-nav">
+                <li><a href="#dashboard"><ion-icon name="grid-outline"></ion-icon> Dashboard</a></li>
+                <li><a href="#todos"><ion-icon name="checkmark-circle-outline"></ion-icon> Manajemen Todos</a></li>
+                <li><a href="#habits"><ion-icon name="leaf-outline"></ion-icon> Habit Tracking</a></li>
+                <li><a href="#notifikasi"><ion-icon name="notifications-outline"></ion-icon> Notifikasi</a></li>
+                <li><a href="#pengaturan"><ion-icon name="settings-outline"></ion-icon> Pengaturan</a></li>
+            </ul>
+
+            <p class="sidebar-section-title">Panduan</p>
+            <ul class="sidebar-nav">
+                <li><a href="#panduan-todo"><ion-icon name="create-outline"></ion-icon> Membuat Todo</a></li>
+                <li><a href="#panduan-habit"><ion-icon name="repeat-outline"></ion-icon> Membuat Habit</a></li>
+                <li><a href="#tema"><ion-icon name="color-palette-outline"></ion-icon> Mengubah Tema</a></li>
+            </ul>
+
+            <p class="sidebar-section-title">Referensi</p>
+            <ul class="sidebar-nav">
+                <li><a href="#faq"><ion-icon name="help-circle-outline"></ion-icon> FAQ</a></li>
+                <li><a href="#changelog"><ion-icon name="list-outline"></ion-icon> Changelog</a></li>
+                <li><a href="#kontak"><ion-icon name="mail-outline"></ion-icon> Kontak & Dukungan</a></li>
+            </ul>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main">
+            <!-- BREADCRUMB -->
+            <div class="breadcrumb">
+                <a href="index.html">DailyFlow</a>
+                <ion-icon name="chevron-forward-outline" style="font-size:0.8rem"></ion-icon>
+                <span>Dokumentasi</span>
+            </div>
+
+            <!-- ─── PENGENALAN ─── -->
+            <section id="pengenalan" class="doc-section">
+                <div class="section-badge"><ion-icon name="rocket-outline"></ion-icon> Memulai</div>
+                <h1 class="doc-title">Dokumentasi DailyFlow</h1>
+                <p class="doc-lead">Selamat datang di dokumentasi resmi DailyFlow — aplikasi produktivitas modern untuk
+                    mengelola tugas harian dan membangun kebiasaan positif.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="checkmark-circle-outline"></ion-icon></div>
+                        <h3>Smart Todos</h3>
+                        <p>Kelola tugas dengan prioritas, deskripsi, dan tanggal jatuh tempo.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="leaf-outline"></ion-icon></div>
+                        <h3>Habit Tracking</h3>
+                        <p>Bangun kebiasaan positif dengan streak harian dan jadwal fleksibel.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="notifications-outline"></ion-icon></div>
+                        <h3>Smart Notifications</h3>
+                        <p>Pengingat cerdas untuk memastikan Anda tidak melewatkan apapun.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="moon-outline"></ion-icon></div>
+                        <h3>Dark Mode</h3>
+                        <p>Tampilan gelap yang elegan, mengikuti preferensi sistem Anda.</p>
+                    </div>
+                </div>
+
+                <div class="callout callout-info">
+                    <ion-icon name="information-circle-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Versi Saat Ini</p>
+                        <p class="callout-body">DailyFlow v1.0.0 · Tersedia untuk Android · Gratis tanpa iklan</p>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- ─── INSTALASI ─── -->
+            <section id="installasi" class="doc-section">
+                <div class="section-badge"><ion-icon name="download-outline"></ion-icon> Setup</div>
+                <h2><ion-icon name="download-outline"></ion-icon> Instalasi</h2>
+                <p>DailyFlow tersedia sebagai file APK untuk Android. Ikuti langkah berikut untuk menginstall aplikasi:
+                </p>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <p class="step-title">Download APK</p>
+                            <p class="step-desc">Klik tombol <strong>Download Gratis</strong> di website atau unduh
+                                langsung dari <a href="index.html#download" style="color: var(--primary-color)">halaman
+                                    download</a>. Pilih versi sesuai arsitektur perangkat Anda.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <p class="step-title">Aktifkan Sumber Tidak Dikenal</p>
+                            <p class="step-desc">Buka <strong>Pengaturan → Keamanan → Instal aplikasi tidak
+                                    dikenal</strong>, lalu aktifkan izin untuk browser atau file manager Anda.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <p class="step-title">Install APK</p>
+                            <p class="step-desc">Buka file APK yang sudah didownload menggunakan file manager, lalu tap
+                                <strong>Install</strong> dan ikuti petunjuk di layar.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <p class="step-title">Buka Aplikasi</p>
+                            <p class="step-desc">Setelah instalasi selesai, buka DailyFlow dari launcher. Izinkan
+                                notifikasi saat diminta agar fitur pengingat berfungsi optimal.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="callout callout-tip">
+                    <ion-icon name="checkmark-circle-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Tips</p>
+                        <p class="callout-body">Pilih APK <code>arm64-v8a</code> untuk perangkat 64-bit modern
+                            (direkomendasikan). Gunakan <code>armeabi-v7a</code> untuk perangkat lama atau 32-bit.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── PERSYARATAN ─── -->
+            <section id="persyaratan" class="doc-section">
+                <h2><ion-icon name="phone-portrait-outline"></ion-icon> Persyaratan Sistem</h2>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Komponen</th>
+                            <th>Minimum</th>
+                            <th>Direkomendasikan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Android Version</td>
+                            <td>Android 6.0 (API 23)</td>
+                            <td>Android 10+ (API 29)</td>
+                        </tr>
+                        <tr>
+                            <td>RAM</td>
+                            <td>2 GB</td>
+                            <td>4 GB</td>
+                        </tr>
+                        <tr>
+                            <td>Storage</td>
+                            <td>50 MB</td>
+                            <td>100 MB</td>
+                        </tr>
+                        <tr>
+                            <td>Arsitektur</td>
+                            <td>armeabi-v7a (32-bit)</td>
+                            <td>arm64-v8a (64-bit)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <hr class="divider">
+
+            <!-- ─── DASHBOARD ─── -->
+            <section id="dashboard" class="doc-section">
+                <div class="section-badge"><ion-icon name="grid-outline"></ion-icon> Fitur</div>
+                <h2><ion-icon name="grid-outline"></ion-icon> Dashboard</h2>
+                <p>Dashboard adalah halaman utama DailyFlow yang memberikan ringkasan aktivitas produktivitas Anda hari
+                    ini secara menyeluruh.</p>
+
+                <h3>Apa yang ditampilkan di Dashboard?</h3>
+                <ul>
+                    <li><strong>Ringkasan Todo Hari Ini</strong> — jumlah tugas selesai vs total</li>
+                    <li><strong>Habit Streak</strong> — kebiasaan yang perlu diselesaikan hari ini</li>
+                    <li><strong>Motivational Quote</strong> — kutipan motivasi harian</li>
+                    <li><strong>Progress Overview</strong> — visual progress mingguan</li>
+                </ul>
+
+                <div class="callout callout-info">
+                    <ion-icon name="information-circle-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Navigasi Antar Halaman</p>
+                        <p class="callout-body">Gunakan navigation bar di bagian bawah layar untuk berpindah antara
+                            Dashboard, Todos, Habits, dan Settings. Anda juga bisa swipe kiri/kanan untuk navigasi lebih
+                            cepat.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── TODOS ─── -->
+            <section id="todos" class="doc-section">
+                <h2><ion-icon name="checkmark-circle-outline"></ion-icon> Manajemen Todos</h2>
+                <p>Fitur Todos memungkinkan Anda membuat, mengelola, dan menyelesaikan tugas-tugas harian dengan
+                    efisien.</p>
+
+                <h3>Fitur Todos</h3>
+                <ul>
+                    <li>Buat tugas dengan judul dan deskripsi opsional</li>
+                    <li>Atur <strong>prioritas</strong>: Tinggi, Sedang, atau Rendah</li>
+                    <li>Tetapkan <strong>tanggal jatuh tempo</strong> untuk setiap tugas</li>
+                    <li>Tandai tugas sebagai selesai dengan satu ketukan</li>
+                    <li>Filter tugas berdasarkan status (semua/aktif/selesai)</li>
+                    <li>Swipe untuk menghapus tugas dengan cepat</li>
+                </ul>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Prioritas</th>
+                            <th>Warna</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🔴 Tinggi</td>
+                            <td>Merah</td>
+                            <td>Tugas mendesak atau penting</td>
+                        </tr>
+                        <tr>
+                            <td>🟡 Sedang</td>
+                            <td>Kuning</td>
+                            <td>Tugas normal, perlu perhatian</td>
+                        </tr>
+                        <tr>
+                            <td>🟢 Rendah</td>
+                            <td>Hijau</td>
+                            <td>Tugas opsional atau tidak mendesak</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ─── HABITS ─── -->
+            <section id="habits" class="doc-section">
+                <h2><ion-icon name="leaf-outline"></ion-icon> Habit Tracking</h2>
+                <p>Bangun kebiasaan positif secara konsisten dengan sistem habit tracking yang cerdas dan memotivasi.
+                </p>
+
+                <h3>Cara Kerja Habit</h3>
+                <ul>
+                    <li>Buat habit dengan nama, deskripsi, dan ikon pilihan</li>
+                    <li>Atur <strong>jadwal pengulangan</strong>: harian, mingguan (pilih hari), atau weekday</li>
+                    <li>Set <strong>pengingat notifikasi</strong> di waktu tertentu</li>
+                    <li>Centang habit setiap hari untuk menjaga streak Anda</li>
+                    <li>Pantau <strong>streak terpanjang</strong> dan total penyelesaian</li>
+                </ul>
+
+                <div class="callout callout-warning">
+                    <ion-icon name="warning-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Jaga Streak Anda!</p>
+                        <p class="callout-body">Jika Anda melewatkan satu hari pada habit harian, streak Anda akan
+                            direset ke 0. Aktifkan notifikasi pengingat agar tidak terlewat.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── NOTIFIKASI ─── -->
+            <section id="notifikasi" class="doc-section">
+                <h2><ion-icon name="notifications-outline"></ion-icon> Notifikasi</h2>
+                <p>DailyFlow menggunakan notifikasi lokal untuk mengingatkan Anda tentang habit dan tugas tanpa
+                    memerlukan koneksi internet.</p>
+
+                <h3>Jenis Notifikasi</h3>
+                <ul>
+                    <li><strong>Habit Reminder</strong> — pengingat berdasarkan waktu yang Anda set saat membuat habit
+                    </li>
+                    <li><strong>Due Date Reminder</strong> — notifikasi saat todo mendekati tanggal jatuh tempo</li>
+                </ul>
+
+                <div class="callout callout-tip">
+                    <ion-icon name="checkmark-circle-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Izin Notifikasi</p>
+                        <p class="callout-body">Pastikan izin notifikasi sudah diberikan ke DailyFlow. Jika notifikasi
+                            tidak muncul, periksa di <strong>Pengaturan Perangkat → Aplikasi → DailyFlow →
+                                Notifikasi</strong>.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── PENGATURAN ─── -->
+            <section id="pengaturan" class="doc-section">
+                <h2><ion-icon name="settings-outline"></ion-icon> Pengaturan</h2>
+                <p>Halaman Settings memungkinkan Anda mengkustomisasi pengalaman menggunakan DailyFlow.</p>
+
+                <h3>Opsi yang Tersedia</h3>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Pengaturan</th>
+                            <th>Opsi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tema Tampilan</td>
+                            <td>Light, Dark, System Default</td>
+                        </tr>
+                        <tr>
+                            <td>Versi Aplikasi</td>
+                            <td>Informasi versi saat ini</td>
+                        </tr>
+                        <tr>
+                            <td>Tentang DailyFlow</td>
+                            <td>Deskripsi dan informasi aplikasi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <hr class="divider">
+
+            <!-- ─── PANDUAN TODO ─── -->
+            <section id="panduan-todo" class="doc-section">
+                <div class="section-badge"><ion-icon name="create-outline"></ion-icon> Panduan</div>
+                <h2><ion-icon name="create-outline"></ion-icon> Cara Membuat Todo</h2>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <p class="step-title">Buka halaman Todos</p>
+                            <p class="step-desc">Tap ikon <strong>Todos</strong> di navigation bar bawah.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <p class="step-title">Tap tombol +</p>
+                            <p class="step-desc">Tap tombol FAB (floating action button) berwarna biru di pojok kanan
+                                bawah.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <p class="step-title">Isi detail tugas</p>
+                            <p class="step-desc">Masukkan <strong>judul</strong>, deskripsi (opsional), pilih
+                                <strong>prioritas</strong>, dan set tanggal jatuh tempo jika diperlukan.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <p class="step-title">Simpan</p>
+                            <p class="step-desc">Tap tombol <strong>Simpan</strong> untuk menambahkan tugas ke daftar.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── PANDUAN HABIT ─── -->
+            <section id="panduan-habit" class="doc-section">
+                <h2><ion-icon name="repeat-outline"></ion-icon> Cara Membuat Habit</h2>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <p class="step-title">Buka halaman Habits</p>
+                            <p class="step-desc">Tap ikon <strong>Habits</strong> (daun) di navigation bar bawah.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <p class="step-title">Tap tombol +</p>
+                            <p class="step-desc">Tap FAB di pojok kanan bawah untuk membuka form pembuatan habit.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <p class="step-title">Konfigurasi habit</p>
+                            <p class="step-desc">Masukkan <strong>nama habit</strong>, deskripsi, pilih ikon, atur
+                                jadwal pengulangan, dan aktifkan notifikasi jika diinginkan.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <p class="step-title">Simpan & Mulai</p>
+                            <p class="step-desc">Tap <strong>Simpan</strong>. Habit akan muncul di halaman Habits dan
+                                siap untuk diceklis hari ini.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── TEMA ─── -->
+            <section id="tema" class="doc-section">
+                <h2><ion-icon name="color-palette-outline"></ion-icon> Mengubah Tema</h2>
+                <p>DailyFlow mendukung Light Mode, Dark Mode, dan mengikuti tema sistem perangkat Anda secara otomatis.
+                </p>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <p class="step-title">Buka Settings</p>
+                            <p class="step-desc">Tap ikon <strong>Settings</strong> (roda gigi) di navigation bar bawah.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <p class="step-title">Tap "Theme"</p>
+                            <p class="step-desc">Di bagian <strong>Appearance</strong>, tap item Theme untuk membuka
+                                dialog pilihan tema.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <p class="step-title">Pilih tema</p>
+                            <p class="step-desc">Pilih <strong>Light</strong>, <strong>Dark</strong>, atau
+                                <strong>System Default</strong> sesuai preferensi Anda.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="divider">
+
+            <!-- ─── FAQ ─── -->
+            <section id="faq" class="doc-section">
+                <div class="section-badge"><ion-icon name="help-circle-outline"></ion-icon> Referensi</div>
+                <h2><ion-icon name="help-circle-outline"></ion-icon> FAQ</h2>
+                <p>Pertanyaan yang sering diajukan tentang DailyFlow.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Apakah DailyFlow membutuhkan koneksi internet?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Tidak. DailyFlow adalah aplikasi <strong>offline-first</strong>.
+                            Semua data disimpan secara lokal di perangkat Anda. Tidak diperlukan internet untuk membuat
+                            atau mengelola todos dan habits.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Apakah data saya aman?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Ya. Semua data tersimpan <strong>hanya di perangkat Anda</strong>
+                            menggunakan database lokal. DailyFlow tidak mengirimkan data Anda ke server manapun dan
+                            tidak memerlukan akun atau login.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Notifikasi saya tidak muncul, apa solusinya?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Periksa dua hal: (1) Pastikan izin notifikasi sudah diberikan ke
+                            DailyFlow di <strong>Pengaturan Perangkat → Aplikasi → DailyFlow</strong>. (2) Pastikan
+                            battery optimization untuk DailyFlow dimatikan agar aplikasi bisa berjalan di background.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Bagaimana cara menghapus todo atau habit?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Cukup <strong>swipe ke kiri</strong> pada item todo atau habit
+                            yang ingin dihapus. Tombol hapus (merah) akan muncul. Tap untuk mengkonfirmasi penghapusan.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Apakah DailyFlow gratis?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Ya, DailyFlow <strong>100% gratis</strong> dan tidak mengandung
+                            iklan. Download APK langsung dari website resmi ini tanpa biaya apapun.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        APK mana yang harus saya download?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Untuk sebagian besar perangkat Android modern (2018 ke atas),
+                            pilih <code>arm64-v8a</code>. Jika perangkat Anda lebih lama atau 32-bit, pilih
+                            <code>armeabi-v7a</code>. Jika tidak yakin, download <code>universal</code> yang kompatibel
+                            dengan semua perangkat.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── CHANGELOG ─── -->
+            <section id="changelog" class="doc-section">
+                <h2><ion-icon name="list-outline"></ion-icon> Changelog</h2>
+
+                <div style="border-left: 3px solid var(--primary-color); padding-left: 1.5rem; margin: 1rem 0;">
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
+                        <span
+                            style="background:var(--primary-gradient);color:white;padding:0.2rem 0.75rem;border-radius:2rem;font-size:0.8rem;font-weight:700">v1.0.0</span>
+                        <span style="color:var(--text-light);font-size:0.85rem">Maret 2026</span>
+                    </div>
+                    <ul style="color:var(--text-secondary);font-size:0.9rem">
+                        <li>🎉 Rilis perdana DailyFlow</li>
+                        <li>✅ Fitur Todos dengan prioritas dan due date</li>
+                        <li>🌱 Habit Tracking dengan streak counter</li>
+                        <li>🔔 Smart notifications untuk habits</li>
+                        <li>🌙 Dark mode & light mode support</li>
+                        <li>📱 Navigasi swipe antar halaman</li>
+                        <li>💾 Penyimpanan data offline (no internet needed)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- ─── KONTAK ─── -->
+            <section id="kontak" class="doc-section">
+                <h2><ion-icon name="mail-outline"></ion-icon> Kontak & Dukungan</h2>
+                <p>Butuh bantuan atau punya saran? Kami siap membantu.</p>
+
+                <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr))">
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="logo-github"></ion-icon></div>
+                        <h3>GitHub</h3>
+                        <p>Laporkan bug atau request fitur melalui GitHub Issues.</p>
+                        <a href="https://github.com/armanwiranda/dailyflow" target="_blank" rel="noopener"
+                            style="color:var(--primary-color);font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.5rem">Buka
+                            GitHub <ion-icon name="open-outline" style="font-size:0.9rem"></ion-icon></a>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="mail-outline"></ion-icon></div>
+                        <h3>Email</h3>
+                        <p>Kirim pertanyaan atau feedback langsung via email.</p>
+                        <a href="mailto:arman@dailyflow.app"
+                            style="color:var(--primary-color);font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.5rem">Kirim
+                            Email <ion-icon name="arrow-forward-outline" style="font-size:0.9rem"></ion-icon></a>
+                    </div>
+                </div>
+
+                <div class="callout callout-info" style="margin-top:2rem">
+                    <ion-icon name="heart-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Dibuat dengan ❤️</p>
+                        <p class="callout-body">DailyFlow dibuat oleh Arman Wiranda sebagai proyek open-source. Jika
+                            Anda menyukai aplikasi ini, tinggalkan ⭐ di GitHub!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // FAQ toggle
+        function toggleFaq(btn) {
+            btn.classList.toggle('open');
+            const answer = btn.nextElementSibling;
+            answer.classList.toggle('open');
+        }
+
+        // Sidebar mobile toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('open');
+        });
+
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('open');
+            overlay.classList.remove('open');
+        });
+
+        // Active sidebar link on scroll
+        const sections = document.querySelectorAll('.doc-section');
+        const navLinks = document.querySelectorAll('.sidebar-nav a');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === '#' + id) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, { rootMargin: '-20% 0px -60% 0px' });
+
+        sections.forEach(section => observer.observe(section));
+
+        // Close sidebar on link click (mobile)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
