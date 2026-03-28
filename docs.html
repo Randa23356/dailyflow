@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DailyFlow - Documentation</title>
+    <title>DailyFlow - Dokumentasi</title>
     <meta name="description"
-        content="Dokumentasi lengkap DailyFlow - Panduan penggunaan, fitur, dan FAQ aplikasi produktivitas.">
+        content="Dokumentasi lengkap DailyFlow — Smart Recommendations, Habit Tracking, Focus Timer, Alarm, Daily Notifications, dan panduan penggunaan lengkap.">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
@@ -81,13 +81,6 @@
             box-shadow: var(--shadow-sm);
         }
 
-        .topbar-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-        }
-
         .topbar-logo {
             width: 36px;
             height: 36px;
@@ -98,6 +91,7 @@
             justify-content: center;
             color: white;
             box-shadow: var(--shadow-blue);
+            flex-shrink: 0;
         }
 
         .topbar-logo img {
@@ -107,30 +101,11 @@
             object-fit: cover;
         }
 
-        .topbar-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .topbar-badge {
-            background: var(--bg-secondary);
-            color: var(--primary-color);
-            border: 1px solid var(--border-color);
-            border-radius: 2rem;
-            padding: 0.2rem 0.75rem;
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-left: 0.5rem;
-        }
-
         .topbar-right {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
+            flex-shrink: 0;
         }
 
         .topbar-link {
@@ -139,11 +114,12 @@
             gap: 0.375rem;
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 500;
-            padding: 0.5rem 0.875rem;
+            padding: 0.5rem 0.75rem;
             border-radius: var(--radius-md);
             transition: all var(--transition);
+            white-space: nowrap;
         }
 
         .topbar-link:hover {
@@ -164,6 +140,8 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .topbar-cta:hover {
@@ -180,6 +158,49 @@
             color: var(--text-primary);
             padding: 0.5rem;
             border-radius: var(--radius-sm);
+            flex-shrink: 0;
+            transition: background var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--bg-secondary);
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .topbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+            text-decoration: none;
+            min-width: 0;
+        }
+
+        .topbar-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        .topbar-badge {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 2rem;
+            padding: 0.2rem 0.625rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         /* ─── LAYOUT ─── */
@@ -694,10 +715,26 @@
             }
 
             .mobile-menu-btn {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .topbar-right .topbar-link {
+                display: none;
+            }
+
+            .topbar-right .topbar-cta {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+                gap: 0.3rem;
+            }
+
+            .topbar-right .topbar-cta span {
+                display: none;
+            }
+
+            .topbar-badge {
                 display: none;
             }
 
@@ -716,13 +753,27 @@
                 display: block;
             }
         }
+
+        @media (max-width: 400px) {
+            .topbar {
+                padding: 0 1rem;
+            }
+
+            .topbar-title {
+                font-size: 1rem;
+            }
+
+            .topbar-right .topbar-cta {
+                padding: 0.45rem 0.75rem;
+            }
+        }
     </style>
 </head>
 
 <body>
     <!-- TOP BAR -->
     <nav class="topbar">
-        <div style="display:flex;align-items:center;gap:1rem">
+        <div class="topbar-left">
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <ion-icon name="menu-outline"></ion-icon>
             </button>
@@ -732,15 +783,18 @@
                         onerror="this.style.display='none';this.parentElement.innerHTML='<ion-icon name=&quot;water-outline&quot; style=&quot;font-size:1.2rem&quot;></ion-icon>'">
                 </div>
                 <span class="topbar-title">DailyFlow</span>
-                <span class="topbar-badge">Docs</span>
+                <span class="topbar-badge">Docs v1.0.0</span>
             </a>
         </div>
         <div class="topbar-right">
             <a href="index.html" class="topbar-link"><ion-icon name="home-outline"></ion-icon> Beranda</a>
             <a href="index.html#download" class="topbar-link"><ion-icon name="download-outline"></ion-icon> Download</a>
-            <a href="index.html#download" class="topbar-cta"><ion-icon name="logo-android"></ion-icon> Download
-                Gratis</a>
+            <a href="index.html#download" class="topbar-cta">
+                <ion-icon name="logo-android"></ion-icon>
+                <span>Download Gratis</span>
+            </a>
         </div>
+    </nav>
     </nav>
 
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
@@ -758,8 +812,11 @@
             <p class="sidebar-section-title">Fitur Utama</p>
             <ul class="sidebar-nav">
                 <li><a href="#dashboard"><ion-icon name="grid-outline"></ion-icon> Dashboard</a></li>
+                <li><a href="#smart-rec"><ion-icon name="bulb-outline"></ion-icon> Smart Recommendations</a></li>
                 <li><a href="#todos"><ion-icon name="checkmark-circle-outline"></ion-icon> Manajemen Todos</a></li>
-                <li><a href="#habits"><ion-icon name="leaf-outline"></ion-icon> Habit Tracking</a></li>
+                <li><a href="#habits"><ion-icon name="flame-outline"></ion-icon> Habit Tracking</a></li>
+                <li><a href="#focus"><ion-icon name="timer-outline"></ion-icon> Focus Timer</a></li>
+                <li><a href="#alarm"><ion-icon name="alarm-outline"></ion-icon> Alarm</a></li>
                 <li><a href="#notifikasi"><ion-icon name="notifications-outline"></ion-icon> Notifikasi</a></li>
                 <li><a href="#pengaturan"><ion-icon name="settings-outline"></ion-icon> Pengaturan</a></li>
             </ul>
@@ -768,7 +825,9 @@
             <ul class="sidebar-nav">
                 <li><a href="#panduan-todo"><ion-icon name="create-outline"></ion-icon> Membuat Todo</a></li>
                 <li><a href="#panduan-habit"><ion-icon name="repeat-outline"></ion-icon> Membuat Habit</a></li>
+                <li><a href="#panduan-focus"><ion-icon name="play-circle-outline"></ion-icon> Memulai Focus</a></li>
                 <li><a href="#tema"><ion-icon name="color-palette-outline"></ion-icon> Mengubah Tema</a></li>
+                <li><a href="#bahasa"><ion-icon name="language-outline"></ion-icon> Mengubah Bahasa</a></li>
             </ul>
 
             <p class="sidebar-section-title">Referensi</p>
@@ -792,29 +851,38 @@
             <section id="pengenalan" class="doc-section">
                 <div class="section-badge"><ion-icon name="rocket-outline"></ion-icon> Memulai</div>
                 <h1 class="doc-title">Dokumentasi DailyFlow</h1>
-                <p class="doc-lead">Selamat datang di dokumentasi resmi DailyFlow — aplikasi produktivitas modern untuk
-                    mengelola tugas harian dan membangun kebiasaan positif.</p>
+                <p class="doc-lead">Selamat datang di dokumentasi resmi DailyFlow — aplikasi produktivitas dengan Smart Recommendations, habit tracking, focus timer, alarm, dan daily greeting notifications. Offline-first, gratis, tanpa iklan.</p>
 
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <div class="feature-card-icon"><ion-icon name="checkmark-circle-outline"></ion-icon></div>
-                        <h3>Smart Todos</h3>
-                        <p>Kelola tugas dengan prioritas, deskripsi, dan tanggal jatuh tempo.</p>
+                        <div class="feature-card-icon"><ion-icon name="bulb-outline"></ion-icon></div>
+                        <h3>Smart Recommendations</h3>
+                        <p>Rekomendasi harian kontekstual berdasarkan todos, habits, dan pola aktivitasmu.</p>
                     </div>
                     <div class="feature-card">
-                        <div class="feature-card-icon"><ion-icon name="leaf-outline"></ion-icon></div>
+                        <div class="feature-card-icon"><ion-icon name="checkmark-circle-outline"></ion-icon></div>
+                        <h3>Smart Todos</h3>
+                        <p>Kelola tugas dengan prioritas, deadline, kategori, dan deteksi overdue otomatis.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="flame-outline"></ion-icon></div>
                         <h3>Habit Tracking</h3>
-                        <p>Bangun kebiasaan positif dengan streak harian dan jadwal fleksibel.</p>
+                        <p>Bangun kebiasaan positif dengan streak harian dan weekly completion rate real-time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="timer-outline"></ion-icon></div>
+                        <h3>Focus Timer</h3>
+                        <p>Sesi kerja mendalam dengan Pomodoro timer yang berjalan di background.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon"><ion-icon name="alarm-outline"></ion-icon></div>
+                        <h3>Alarm</h3>
+                        <p>Alarm fleksibel dengan custom ringtone, repeat, snooze, dan dismiss dari notifikasi.</p>
                     </div>
                     <div class="feature-card">
                         <div class="feature-card-icon"><ion-icon name="notifications-outline"></ion-icon></div>
-                        <h3>Smart Notifications</h3>
-                        <p>Pengingat cerdas untuk memastikan Anda tidak melewatkan apapun.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-card-icon"><ion-icon name="moon-outline"></ion-icon></div>
-                        <h3>Dark Mode</h3>
-                        <p>Tampilan gelap yang elegan, mengikuti preferensi sistem Anda.</p>
+                        <h3>Daily Notifications</h3>
+                        <p>Greeting harian otomatis 3x sehari + pengingat todos & habits. Bilingual ID/EN.</p>
                     </div>
                 </div>
 
@@ -822,7 +890,7 @@
                     <ion-icon name="information-circle-outline" class="callout-icon"></ion-icon>
                     <div class="callout-content">
                         <p class="callout-title">Versi Saat Ini</p>
-                        <p class="callout-body">DailyFlow v1.0.0 · Tersedia untuk Android · Gratis tanpa iklan</p>
+                        <p class="callout-body">DailyFlow v1.0.0 · Android · Gratis · Offline-first · Bilingual (ID & EN)</p>
                     </div>
                 </div>
             </section>
@@ -925,24 +993,65 @@
             <section id="dashboard" class="doc-section">
                 <div class="section-badge"><ion-icon name="grid-outline"></ion-icon> Fitur</div>
                 <h2><ion-icon name="grid-outline"></ion-icon> Dashboard</h2>
-                <p>Dashboard adalah halaman utama DailyFlow yang memberikan ringkasan aktivitas produktivitas Anda hari
-                    ini secara menyeluruh.</p>
+                <p>Dashboard adalah halaman utama DailyFlow yang menampilkan ringkasan produktivitas hari ini secara real-time dan memberikan rekomendasi cerdas berdasarkan kondisi aktualmu.</p>
 
-                <h3>Apa yang ditampilkan di Dashboard?</h3>
+                <h3>Yang ditampilkan di Dashboard</h3>
                 <ul>
-                    <li><strong>Ringkasan Todo Hari Ini</strong> — jumlah tugas selesai vs total</li>
-                    <li><strong>Habit Streak</strong> — kebiasaan yang perlu diselesaikan hari ini</li>
-                    <li><strong>Motivational Quote</strong> — kutipan motivasi harian</li>
-                    <li><strong>Progress Overview</strong> — visual progress mingguan</li>
+                    <li><strong>Greeting & Tanggal</strong> — sapaan sesuai waktu (Pagi/Siang/Malam) dan tanggal hari ini</li>
+                    <li><strong>Productivity Score</strong> — skor harian dihitung dari todos selesai, habits, dan sesi fokus</li>
+                    <li><strong>Stats Cards</strong> — ringkasan todos selesai/total dan habits terjaga hari ini</li>
+                    <li><strong>Smart Insights</strong> — Prime Time hari ini, Deep Focus time, Consistency rate, dan Weekly Peak Hour</li>
+                    <li><strong>Smart Recommendations</strong> — kartu rekomendasi kontekstual (maks. 3 kartu)</li>
+                    <li><strong>Daily Habits</strong> — scroll horizontal habits aktif hari ini</li>
+                    <li><strong>Next Up</strong> — 3 todos terdekat yang perlu diselesaikan</li>
                 </ul>
 
                 <div class="callout callout-info">
                     <ion-icon name="information-circle-outline" class="callout-icon"></ion-icon>
                     <div class="callout-content">
-                        <p class="callout-title">Navigasi Antar Halaman</p>
-                        <p class="callout-body">Gunakan navigation bar di bagian bawah layar untuk berpindah antara
-                            Dashboard, Todos, Habits, dan Settings. Anda juga bisa swipe kiri/kanan untuk navigasi lebih
-                            cepat.</p>
+                        <p class="callout-title">Navigasi</p>
+                        <p class="callout-body">Gunakan navigation bar di bawah untuk berpindah antar halaman. Swipe kiri/kanan juga bisa digunakan untuk navigasi lebih cepat.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── SMART RECOMMENDATIONS ─── -->
+            <section id="smart-rec" class="doc-section">
+                <h2><ion-icon name="bulb-outline"></ion-icon> Smart Recommendations</h2>
+                <p>Smart Recommendations menganalisis data todos, habits, dan aktivitas fokusmu secara real-time untuk memberikan saran yang relevan sesuai waktu dan kondisi hari ini.</p>
+
+                <h3>Cara Kerja</h3>
+                <p>Setiap kali dashboard dibuka atau data berubah, sistem mengevaluasi kondisi berikut secara berurutan:</p>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th>Tipe</th>
+                            <th>Kondisi Muncul</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>⚠️ Overdue Tasks</td><td>Ada todos yang melewati deadline</td><td>Buka Todos</td></tr>
+                        <tr><td>📈 Peak Hour Passed</td><td>Jam produktif mingguanmu sudah lewat, belum ada aktivitas</td><td>Mulai Focus</td></tr>
+                        <tr><td>🎯 Deep Work</td><td>Pagi (06:00–12:00), belum ada sesi fokus</td><td>Buka Focus Timer</td></tr>
+                        <tr><td>✅ High Priority Todo</td><td>Ada todos prioritas tinggi, belum ada yang selesai</td><td>Buka Todos</td></tr>
+                        <tr><td>🔥 Habits Waiting</td><td>Sore (14:00+), masih ada habits belum selesai</td><td>Buka Habits</td></tr>
+                        <tr><td>🏆 Streak On Fire</td><td>Streak habit ≥ 3 hari dan sudah selesai hari ini</td><td>Buka Habits</td></tr>
+                        <tr><td>⚡ Productivity Peak</td><td>Sudah 2+ sesi fokus hari ini</td><td>Buka Focus Timer</td></tr>
+                        <tr><td>🌙 Evening Check-in</td><td>Malam (19:00+), belum ada aktivitas sama sekali</td><td>Buka Todos</td></tr>
+                        <tr><td>🎉 All Clear</td><td>Semua todos dan habits sudah selesai</td><td>Dashboard</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Dismiss Rekomendasi</h3>
+                <p>Tap tombol <code>×</code> di pojok kanan atas kartu untuk dismiss. Rekomendasi yang di-dismiss tidak muncul lagi hari ini dan otomatis reset keesokan harinya.</p>
+
+                <div class="callout callout-tip">
+                    <ion-icon name="checkmark-circle-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Maksimal 3 Kartu</p>
+                        <p class="callout-body">Dashboard menampilkan maksimal 3 rekomendasi sekaligus, diprioritaskan dari yang paling mendesak (overdue dulu, baru yang lain).</p>
                     </div>
                 </div>
             </section>
@@ -950,68 +1059,106 @@
             <!-- ─── TODOS ─── -->
             <section id="todos" class="doc-section">
                 <h2><ion-icon name="checkmark-circle-outline"></ion-icon> Manajemen Todos</h2>
-                <p>Fitur Todos memungkinkan Anda membuat, mengelola, dan menyelesaikan tugas-tugas harian dengan
-                    efisien.</p>
+                <p>Fitur Todos memungkinkan kamu membuat, mengelola, dan menyelesaikan tugas harian dengan efisien. Todos yang melewati deadline otomatis terdeteksi sebagai <strong>overdue</strong>.</p>
 
                 <h3>Fitur Todos</h3>
                 <ul>
-                    <li>Buat tugas dengan judul dan deskripsi opsional</li>
+                    <li>Buat tugas dengan judul, deskripsi opsional, dan kategori</li>
                     <li>Atur <strong>prioritas</strong>: Tinggi, Sedang, atau Rendah</li>
-                    <li>Tetapkan <strong>tanggal jatuh tempo</strong> untuk setiap tugas</li>
-                    <li>Tandai tugas sebagai selesai dengan satu ketukan</li>
-                    <li>Filter tugas berdasarkan status (semua/aktif/selesai)</li>
-                    <li>Swipe untuk menghapus tugas dengan cepat</li>
+                    <li>Tetapkan <strong>tanggal dan waktu jatuh tempo</strong></li>
+                    <li>Tandai selesai dengan satu ketukan — otomatis tercatat di activity log</li>
+                    <li>Filter: Semua, Hari Ini, Mendatang, Terlambat, Selesai</li>
+                    <li>Notifikasi pengingat otomatis saat mendekati deadline</li>
                 </ul>
 
                 <table class="doc-table">
                     <thead>
-                        <tr>
-                            <th>Prioritas</th>
-                            <th>Warna</th>
-                            <th>Keterangan</th>
-                        </tr>
+                        <tr><th>Prioritas</th><th>Warna</th><th>Keterangan</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>🔴 Tinggi</td>
-                            <td>Merah</td>
-                            <td>Tugas mendesak atau penting</td>
-                        </tr>
-                        <tr>
-                            <td>🟡 Sedang</td>
-                            <td>Kuning</td>
-                            <td>Tugas normal, perlu perhatian</td>
-                        </tr>
-                        <tr>
-                            <td>🟢 Rendah</td>
-                            <td>Hijau</td>
-                            <td>Tugas opsional atau tidak mendesak</td>
-                        </tr>
+                        <tr><td>🔴 Tinggi</td><td>Merah</td><td>Tugas mendesak atau penting</td></tr>
+                        <tr><td>🟡 Sedang</td><td>Kuning/Orange</td><td>Tugas normal, perlu perhatian</td></tr>
+                        <tr><td>🟢 Rendah</td><td>Hijau</td><td>Tugas opsional atau tidak mendesak</td></tr>
                     </tbody>
                 </table>
             </section>
 
             <!-- ─── HABITS ─── -->
             <section id="habits" class="doc-section">
-                <h2><ion-icon name="leaf-outline"></ion-icon> Habit Tracking</h2>
-                <p>Bangun kebiasaan positif secara konsisten dengan sistem habit tracking yang cerdas dan memotivasi.
-                </p>
+                <h2><ion-icon name="flame-outline"></ion-icon> Habit Tracking</h2>
+                <p>Bangun kebiasaan positif secara konsisten. Setiap habit yang diselesaikan tercatat di activity log dan berkontribusi ke Productivity Score harianmu.</p>
 
                 <h3>Cara Kerja Habit</h3>
                 <ul>
-                    <li>Buat habit dengan nama, deskripsi, dan ikon pilihan</li>
-                    <li>Atur <strong>jadwal pengulangan</strong>: harian, mingguan (pilih hari), atau weekday</li>
-                    <li>Set <strong>pengingat notifikasi</strong> di waktu tertentu</li>
-                    <li>Centang habit setiap hari untuk menjaga streak Anda</li>
-                    <li>Pantau <strong>streak terpanjang</strong> dan total penyelesaian</li>
+                    <li>Buat habit dengan nama, deskripsi, dan frekuensi (Harian / Mingguan)</li>
+                    <li>Set <strong>waktu pengingat</strong> — notifikasi otomatis setiap hari di jam tersebut</li>
+                    <li>Centang habit setiap hari untuk menjaga streak</li>
+                    <li>Pantau <strong>current streak</strong>, <strong>best streak</strong>, dan <strong>weekly completion rate</strong></li>
+                    <li>Habit Insights tersedia di halaman khusus (tap "View Insights" di dashboard)</li>
                 </ul>
 
                 <div class="callout callout-warning">
                     <ion-icon name="warning-outline" class="callout-icon"></ion-icon>
                     <div class="callout-content">
-                        <p class="callout-title">Jaga Streak Anda!</p>
-                        <p class="callout-body">Jika Anda melewatkan satu hari pada habit harian, streak Anda akan
-                            direset ke 0. Aktifkan notifikasi pengingat agar tidak terlewat.</p>
+                        <p class="callout-title">Jaga Streak!</p>
+                        <p class="callout-body">Melewatkan satu hari pada habit harian akan mereset streak ke 0. Aktifkan notifikasi pengingat agar tidak terlewat.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── FOCUS TIMER ─── -->
+            <section id="focus" class="doc-section">
+                <h2><ion-icon name="timer-outline"></ion-icon> Focus Timer</h2>
+                <p>Focus Timer menggunakan metode Pomodoro untuk sesi kerja mendalam. Timer berjalan di background — kamu bisa keluar dari app dan timer tetap berjalan.</p>
+
+                <h3>Mode Timer</h3>
+                <table class="doc-table">
+                    <thead>
+                        <tr><th>Mode</th><th>Durasi Default</th><th>Keterangan</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>🎯 Work</td><td>25 menit</td><td>Sesi kerja mendalam</td></tr>
+                        <tr><td>☕ Short Break</td><td>5 menit</td><td>Istirahat singkat antar sesi</td></tr>
+                        <tr><td>🛋️ Long Break</td><td>15 menit</td><td>Istirahat panjang setelah 4 sesi</td></tr>
+                    </tbody>
+                </table>
+
+                <h3>Fitur Focus Timer</h3>
+                <ul>
+                    <li>Notifikasi saat sesi selesai dengan tombol aksi (Pause / Stop)</li>
+                    <li>Semua sesi work tercatat otomatis di activity log</li>
+                    <li>Data sesi berkontribusi ke Productivity Score dan Smart Insights</li>
+                    <li>Tombol Pause dan Resume tersedia selama sesi berjalan</li>
+                </ul>
+
+                <div class="callout callout-tip">
+                    <ion-icon name="checkmark-circle-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Background Mode</p>
+                        <p class="callout-body">Focus Timer tetap berjalan meski app diminimize. Pastikan battery optimization untuk DailyFlow dimatikan agar background service tidak terhenti.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── ALARM ─── -->
+            <section id="alarm" class="doc-section">
+                <h2><ion-icon name="alarm-outline"></ion-icon> Alarm</h2>
+                <p>Alarm DailyFlow mendukung custom ringtone, repeat mingguan, snooze, dan dismiss langsung dari notifikasi — bahkan saat layar mati.</p>
+
+                <h3>Fitur Alarm</h3>
+                <ul>
+                    <li>Buat alarm dengan label, waktu, dan pilihan hari repeat</li>
+                    <li>Pilih <strong>ringtone custom</strong> dari perangkat</li>
+                    <li>Tombol <strong>Snooze 5 menit</strong> dan <strong>Dismiss</strong> langsung dari notifikasi</li>
+                    <li>Alarm berjalan dengan <code>fullScreenIntent</code> — muncul meski layar terkunci</li>
+                    <li>Indikator status bar saat alarm aktif</li>
+                </ul>
+
+                <div class="callout callout-warning">
+                    <ion-icon name="warning-outline" class="callout-icon"></ion-icon>
+                    <div class="callout-content">
+                        <p class="callout-title">Izin Exact Alarm</p>
+                        <p class="callout-body">Di Android 12+, DailyFlow membutuhkan izin <strong>Schedule Exact Alarm</strong> agar alarm tepat waktu. Izin ini diminta otomatis saat pertama kali membuka app.</p>
                     </div>
                 </div>
             </section>
@@ -1019,23 +1166,31 @@
             <!-- ─── NOTIFIKASI ─── -->
             <section id="notifikasi" class="doc-section">
                 <h2><ion-icon name="notifications-outline"></ion-icon> Notifikasi</h2>
-                <p>DailyFlow menggunakan notifikasi lokal untuk mengingatkan Anda tentang habit dan tugas tanpa
-                    memerlukan koneksi internet.</p>
+                <p>DailyFlow menggunakan notifikasi lokal — tidak perlu internet. Semua notifikasi dijadwalkan langsung di perangkat.</p>
 
                 <h3>Jenis Notifikasi</h3>
-                <ul>
-                    <li><strong>Habit Reminder</strong> — pengingat berdasarkan waktu yang Anda set saat membuat habit
-                    </li>
-                    <li><strong>Due Date Reminder</strong> — notifikasi saat todo mendekati tanggal jatuh tempo</li>
-                </ul>
+                <table class="doc-table">
+                    <thead>
+                        <tr><th>Jenis</th><th>Waktu</th><th>Keterangan</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>☀️ Selamat Pagi</td><td>07:00 setiap hari</td><td>Sapaan pagi + ajakan cek tugas</td></tr>
+                        <tr><td>🌤️ Siang Hari</td><td>13:00 setiap hari</td><td>Pengingat cek progres habits</td></tr>
+                        <tr><td>🌙 Malam Hari</td><td>20:00 setiap hari</td><td>Refleksi dan review hari ini</td></tr>
+                        <tr><td>✅ Todo Reminder</td><td>Sesuai due time</td><td>Pengingat saat todo mendekati deadline</td></tr>
+                        <tr><td>🔥 Habit Reminder</td><td>Sesuai waktu habit</td><td>Pengingat harian untuk setiap habit aktif</td></tr>
+                        <tr><td>⏰ Alarm</td><td>Sesuai jadwal alarm</td><td>Alarm dengan ringtone, snooze, dan dismiss</td></tr>
+                        <tr><td>🎯 Focus Timer</td><td>Saat sesi selesai</td><td>Notifikasi akhir sesi dengan aksi Pause/Stop</td></tr>
+                    </tbody>
+                </table>
+
+                <p>Notifikasi greeting harian menyesuaikan bahasa yang dipilih di Settings (Indonesia atau English) dan dijadwalkan ulang otomatis setiap kali app dibuka.</p>
 
                 <div class="callout callout-tip">
                     <ion-icon name="checkmark-circle-outline" class="callout-icon"></ion-icon>
                     <div class="callout-content">
-                        <p class="callout-title">Izin Notifikasi</p>
-                        <p class="callout-body">Pastikan izin notifikasi sudah diberikan ke DailyFlow. Jika notifikasi
-                            tidak muncul, periksa di <strong>Pengaturan Perangkat → Aplikasi → DailyFlow →
-                                Notifikasi</strong>.</p>
+                        <p class="callout-title">Notifikasi Tidak Muncul?</p>
+                        <p class="callout-body">Periksa: (1) Izin notifikasi di <strong>Pengaturan → Aplikasi → DailyFlow → Notifikasi</strong>. (2) Matikan battery optimization untuk DailyFlow. (3) Di Android 12+, pastikan izin <strong>Schedule Exact Alarm</strong> sudah diberikan.</p>
                     </div>
                 </div>
             </section>
@@ -1043,29 +1198,16 @@
             <!-- ─── PENGATURAN ─── -->
             <section id="pengaturan" class="doc-section">
                 <h2><ion-icon name="settings-outline"></ion-icon> Pengaturan</h2>
-                <p>Halaman Settings memungkinkan Anda mengkustomisasi pengalaman menggunakan DailyFlow.</p>
+                <p>Halaman Settings memungkinkan kamu mengkustomisasi tampilan dan bahasa DailyFlow.</p>
 
-                <h3>Opsi yang Tersedia</h3>
                 <table class="doc-table">
                     <thead>
-                        <tr>
-                            <th>Pengaturan</th>
-                            <th>Opsi</th>
-                        </tr>
+                        <tr><th>Pengaturan</th><th>Opsi</th><th>Keterangan</th></tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tema Tampilan</td>
-                            <td>Light, Dark, System Default</td>
-                        </tr>
-                        <tr>
-                            <td>Versi Aplikasi</td>
-                            <td>Informasi versi saat ini</td>
-                        </tr>
-                        <tr>
-                            <td>Tentang DailyFlow</td>
-                            <td>Deskripsi dan informasi aplikasi</td>
-                        </tr>
+                        <tr><td>Tema Tampilan</td><td>Light, Dark, System Default</td><td>Disimpan permanen di perangkat</td></tr>
+                        <tr><td>Bahasa</td><td>Bahasa Indonesia, English</td><td>Mempengaruhi semua teks dan notifikasi</td></tr>
+                        <tr><td>Tentang DailyFlow</td><td>—</td><td>Versi app dan deskripsi</td></tr>
                     </tbody>
                 </table>
             </section>
@@ -1150,35 +1292,97 @@
                 </div>
             </section>
 
+            <!-- ─── PANDUAN FOCUS ─── -->
+            <section id="panduan-focus" class="doc-section">
+                <h2><ion-icon name="play-circle-outline"></ion-icon> Memulai Focus Timer</h2>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <p class="step-title">Buka halaman Focus</p>
+                            <p class="step-desc">Tap ikon <strong>Focus</strong> (timer) di navigation bar bawah.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <p class="step-title">Tap "Start Focus"</p>
+                            <p class="step-desc">Tap tombol Start untuk memulai sesi kerja 25 menit. Timer langsung berjalan di background.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <p class="step-title">Fokus bekerja</p>
+                            <p class="step-desc">Kamu bisa minimize app — timer tetap berjalan. Notifikasi muncul saat sesi selesai.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">4</div>
+                        <div class="step-content">
+                            <p class="step-title">Istirahat & ulangi</p>
+                            <p class="step-desc">Setelah notifikasi sesi selesai, ambil short break lalu mulai sesi berikutnya.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- ─── TEMA ─── -->
             <section id="tema" class="doc-section">
                 <h2><ion-icon name="color-palette-outline"></ion-icon> Mengubah Tema</h2>
-                <p>DailyFlow mendukung Light Mode, Dark Mode, dan mengikuti tema sistem perangkat Anda secara otomatis.
-                </p>
+                <p>DailyFlow mendukung Light Mode, Dark Mode, dan mengikuti tema sistem perangkat secara otomatis.</p>
 
                 <div class="steps">
                     <div class="step">
                         <div class="step-num">1</div>
                         <div class="step-content">
                             <p class="step-title">Buka Settings</p>
-                            <p class="step-desc">Tap ikon <strong>Settings</strong> (roda gigi) di navigation bar bawah.
-                            </p>
+                            <p class="step-desc">Tap ikon <strong>Settings</strong> (roda gigi) di navigation bar bawah.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-num">2</div>
                         <div class="step-content">
                             <p class="step-title">Tap "Theme"</p>
-                            <p class="step-desc">Di bagian <strong>Appearance</strong>, tap item Theme untuk membuka
-                                dialog pilihan tema.</p>
+                            <p class="step-desc">Di bagian <strong>Appearance</strong>, tap item Theme untuk membuka dialog pilihan tema.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-num">3</div>
                         <div class="step-content">
                             <p class="step-title">Pilih tema</p>
-                            <p class="step-desc">Pilih <strong>Light</strong>, <strong>Dark</strong>, atau
-                                <strong>System Default</strong> sesuai preferensi Anda.</p>
+                            <p class="step-desc">Pilih <strong>Light</strong>, <strong>Dark</strong>, atau <strong>System Default</strong>. Perubahan langsung diterapkan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── BAHASA ─── -->
+            <section id="bahasa" class="doc-section">
+                <h2><ion-icon name="language-outline"></ion-icon> Mengubah Bahasa</h2>
+                <p>DailyFlow mendukung Bahasa Indonesia dan English. Semua teks, notifikasi, dan rekomendasi menyesuaikan bahasa yang dipilih.</p>
+
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-num">1</div>
+                        <div class="step-content">
+                            <p class="step-title">Buka Settings</p>
+                            <p class="step-desc">Tap ikon <strong>Settings</strong> di navigation bar bawah.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">2</div>
+                        <div class="step-content">
+                            <p class="step-title">Tap "Language"</p>
+                            <p class="step-desc">Di bagian <strong>Appearance</strong>, tap item Language.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-num">3</div>
+                        <div class="step-content">
+                            <p class="step-title">Pilih bahasa</p>
+                            <p class="step-desc">Pilih <strong>Bahasa Indonesia</strong> atau <strong>English</strong>. Notifikasi harian akan otomatis dijadwalkan ulang dengan bahasa baru.</p>
                         </div>
                     </div>
                 </div>
@@ -1198,9 +1402,7 @@
                         <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Tidak. DailyFlow adalah aplikasi <strong>offline-first</strong>.
-                            Semua data disimpan secara lokal di perangkat Anda. Tidak diperlukan internet untuk membuat
-                            atau mengelola todos dan habits.</div>
+                        <div class="faq-answer-inner">Tidak. DailyFlow adalah aplikasi <strong>offline-first</strong>. Semua data disimpan secara lokal di perangkat. Tidak diperlukan internet untuk semua fitur termasuk notifikasi, focus timer, dan alarm.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1209,9 +1411,7 @@
                         <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Ya. Semua data tersimpan <strong>hanya di perangkat Anda</strong>
-                            menggunakan database lokal. DailyFlow tidak mengirimkan data Anda ke server manapun dan
-                            tidak memerlukan akun atau login.</div>
+                        <div class="faq-answer-inner">Ya. Semua data tersimpan <strong>hanya di perangkat kamu</strong> menggunakan database lokal (Hive). DailyFlow tidak mengirimkan data ke server manapun dan tidak memerlukan akun atau login.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1220,10 +1420,25 @@
                         <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Periksa dua hal: (1) Pastikan izin notifikasi sudah diberikan ke
-                            DailyFlow di <strong>Pengaturan Perangkat → Aplikasi → DailyFlow</strong>. (2) Pastikan
-                            battery optimization untuk DailyFlow dimatikan agar aplikasi bisa berjalan di background.
-                        </div>
+                        <div class="faq-answer-inner">Periksa tiga hal: (1) Izin notifikasi di <strong>Pengaturan → Aplikasi → DailyFlow → Notifikasi</strong>. (2) Matikan battery optimization untuk DailyFlow. (3) Di Android 12+, pastikan izin <strong>Schedule Exact Alarm</strong> sudah diberikan.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Smart Recommendations tidak muncul, kenapa?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Rekomendasi muncul berdasarkan kondisi aktual. Jika semua todos dan habits sudah selesai, atau belum ada data sama sekali, rekomendasi mungkin tidak relevan untuk ditampilkan. Coba tambahkan beberapa todos atau habits terlebih dahulu.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Focus Timer berhenti saat app di-minimize, kenapa?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Ini biasanya karena battery optimization aktif. Buka <strong>Pengaturan → Baterai → Optimasi Baterai</strong>, cari DailyFlow, dan pilih <strong>Jangan Optimalkan</strong>.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1232,19 +1447,7 @@
                         <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Cukup <strong>swipe ke kiri</strong> pada item todo atau habit
-                            yang ingin dihapus. Tombol hapus (merah) akan muncul. Tap untuk mengkonfirmasi penghapusan.
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question" onclick="toggleFaq(this)">
-                        Apakah DailyFlow gratis?
-                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">Ya, DailyFlow <strong>100% gratis</strong> dan tidak mengandung
-                            iklan. Download APK langsung dari website resmi ini tanpa biaya apapun.</div>
+                        <div class="faq-answer-inner"><strong>Swipe ke kiri</strong> pada item todo atau habit yang ingin dihapus, lalu konfirmasi penghapusan di dialog yang muncul.</div>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1253,10 +1456,16 @@
                         <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
                     </button>
                     <div class="faq-answer">
-                        <div class="faq-answer-inner">Untuk sebagian besar perangkat Android modern (2018 ke atas),
-                            pilih <code>arm64-v8a</code>. Jika perangkat Anda lebih lama atau 32-bit, pilih
-                            <code>armeabi-v7a</code>. Jika tidak yakin, download <code>universal</code> yang kompatibel
-                            dengan semua perangkat.</div>
+                        <div class="faq-answer-inner">Untuk HP Android modern (2018 ke atas), pilih <code>arm64-v8a</code>. Untuk HP lama atau 32-bit, pilih <code>armeabi-v7a</code>. Tidak yakin? Download <code>universal</code> yang kompatibel dengan semua perangkat.</div>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        Apakah DailyFlow gratis?
+                        <ion-icon name="chevron-down-outline" class="faq-icon"></ion-icon>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">Ya, DailyFlow <strong>100% gratis</strong>, tidak ada iklan, tidak ada in-app purchase. Download APK langsung dari website resmi ini.</div>
                     </div>
                 </div>
             </section>
@@ -1266,19 +1475,23 @@
                 <h2><ion-icon name="list-outline"></ion-icon> Changelog</h2>
 
                 <div style="border-left: 3px solid var(--primary-color); padding-left: 1.5rem; margin: 1rem 0;">
-                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem">
-                        <span
-                            style="background:var(--primary-gradient);color:white;padding:0.2rem 0.75rem;border-radius:2rem;font-size:0.8rem;font-weight:700">v1.0.0</span>
-                        <span style="color:var(--text-light);font-size:0.85rem">Maret 2026</span>
+                    <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem">
+                        <span style="background:var(--primary-gradient);color:white;padding:0.2rem 0.75rem;border-radius:2rem;font-size:0.8rem;font-weight:700">v1.0.0</span>
+                        <span style="color:var(--text-light);font-size:0.85rem">Maret 2026 · Rilis Terbaru</span>
                     </div>
-                    <ul style="color:var(--text-secondary);font-size:0.9rem">
+                    <ul style="color:var(--text-secondary);font-size:0.9rem;line-height:1.9">
                         <li>🎉 Rilis perdana DailyFlow</li>
-                        <li>✅ Fitur Todos dengan prioritas dan due date</li>
-                        <li>🌱 Habit Tracking dengan streak counter</li>
-                        <li>🔔 Smart notifications untuk habits</li>
-                        <li>🌙 Dark mode & light mode support</li>
-                        <li>📱 Navigasi swipe antar halaman</li>
-                        <li>💾 Penyimpanan data offline (no internet needed)</li>
+                        <li>🧠 Smart Recommendations — 9 tipe rekomendasi kontekstual berbasis todos + habits + aktivitas</li>
+                        <li>👆 Dismiss rekomendasi per kartu, reset otomatis tiap hari baru</li>
+                        <li>📊 Activity Insights real-time: Prime Time hari ini, Deep Focus, Consistency rate, Weekly Peak Hour</li>
+                        <li>✅ Todos dengan prioritas, deadline, kategori, filter, dan deteksi overdue otomatis</li>
+                        <li>🔥 Habit Tracking dengan streak counter, best streak, dan weekly completion rate</li>
+                        <li>🎯 Focus Timer (Pomodoro) dengan background service — berjalan meski app diminimize</li>
+                        <li>⏰ Alarm dengan custom ringtone, repeat mingguan, snooze 5 menit, dan dismiss dari notifikasi</li>
+                        <li>🔔 Daily Greeting Notifications — 3x sehari (07:00, 13:00, 20:00), bilingual ID/EN</li>
+                        <li>🌙 Dark Mode, Light Mode, dan System Default</li>
+                        <li>🌐 Bilingual penuh: Bahasa Indonesia dan English (semua teks + notifikasi)</li>
+                        <li>💾 Offline-first — semua data tersimpan lokal, tidak perlu akun</li>
                     </ul>
                 </div>
             </section>
@@ -1293,7 +1506,7 @@
                         <div class="feature-card-icon"><ion-icon name="logo-github"></ion-icon></div>
                         <h3>GitHub</h3>
                         <p>Laporkan bug atau request fitur melalui GitHub Issues.</p>
-                        <a href="https://github.com/armanwiranda/dailyflow" target="_blank" rel="noopener"
+                        <a href="https://github.com/Randa23356/dailyflow" target="_blank" rel="noopener"
                             style="color:var(--primary-color);font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.5rem">Buka
                             GitHub <ion-icon name="open-outline" style="font-size:0.9rem"></ion-icon></a>
                     </div>
@@ -1301,18 +1514,17 @@
                         <div class="feature-card-icon"><ion-icon name="mail-outline"></ion-icon></div>
                         <h3>Email</h3>
                         <p>Kirim pertanyaan atau feedback langsung via email.</p>
-                        <a href="mailto:arman@dailyflow.app"
+                        <a href="mailto:randamoonton@gmail.com"
                             style="color:var(--primary-color);font-size:0.85rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;margin-top:0.5rem">Kirim
                             Email <ion-icon name="arrow-forward-outline" style="font-size:0.9rem"></ion-icon></a>
                     </div>
                 </div>
 
                 <div class="callout callout-info" style="margin-top:2rem">
-                    <ion-icon name="heart-outline" class="callout-icon"></ion-icon>
+                    <ion-icon name="code-slash-outline" class="callout-icon"></ion-icon>
                     <div class="callout-content">
-                        <p class="callout-title">Dibuat dengan ❤️</p>
-                        <p class="callout-body">DailyFlow dibuat oleh Arman Wiranda sebagai proyek open-source. Jika
-                            Anda menyukai aplikasi ini, tinggalkan ⭐ di GitHub!</p>
+                        <p class="callout-title">Open Source</p>
+                        <p class="callout-body">DailyFlow dikembangkan oleh <strong>Arman Wiranda</strong> dan tersedia sebagai proyek open-source. Kontribusi, laporan bug, dan saran fitur sangat diterima melalui GitHub.</p>
                     </div>
                 </div>
             </section>
